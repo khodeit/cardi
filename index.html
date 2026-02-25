@@ -4,11 +4,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <title>کارتی پی - خرید ویزا کارت مجازی آمریکا | پرداخت بین المللی</title>
-    <link rel="favicon" type="image/png" href="assests/logo.png?v=1">
+    <link rel="icon" type="image/png" href="assests/logo.png?v=1">
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://kit.fontawesome.com/85879a8cdb.js" crossorigin="anonymous"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <style>
+        /* Custom Scrollbar */
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-track { background: #0F172A; }
+::-webkit-scrollbar-thumb { background: #3282B8; border-radius: 10px; }
+::-webkit-scrollbar-thumb:hover { background: #BBE1FA; }
         @font-face {
             font-family: 'YekanBold';
             src: url('fonts/YekanBakh-Bold.ttf') format('truetype');
@@ -52,6 +58,7 @@
             100% { transform: translateY(0px); }
         }
         .float-animation { animation: float 5s ease-in-out infinite; }
+        
     </style>
     <script shadow>
         tailwind.config = {
@@ -71,7 +78,7 @@
     <div class="glow-sphere w-96 h-96 bg-[#3282B8] top-[-10%] left-[-5%]"></div>
     <div class="glow-sphere w-80 h-80 bg-[#0F4C75] bottom-[10%] right-[-5%]"></div>
 
-    <header class="container mx-auto px-6 py-8 grid grid-cols-2 md:grid-cols-3 items-center">
+    <header class="container mx-auto max-w-7xl px-6 md:px-12 lg:px-20 py-8 grid grid-cols-2 md:grid-cols-3 items-center relative z-50 transition-all duration-300">
         <div class="flex justify-start md:justify-center md:col-start-2">
             <a href="index.html"><img src="assests/logo.png" alt="AniCards Logo" class="w-16 h-16 md:w-20 md:h-20"></a>
         </div>
@@ -82,7 +89,7 @@
         </div>
     </header>
 
-    <main class="container mx-auto px-6 pt-10 pb-24 flex flex-col md:flex-row items-center justify-between">
+    <main class="container mx-auto max-w-7xl px-6 md:px-12 lg:px-20 pt-10 pb-24 flex flex-col md:flex-row items-center justify-between relative z-10">
         
 
         <div class="md:w-1/2 text-right z-10 font-YekanBold">
@@ -97,8 +104,13 @@
                <b>ویزا کارت مجازی آمریکا چیست؟</b> کارت‌های مجازی آنی کارت، کارت‌های اعتباری مجازی هستند که به شما امکان پرداخت در تمام درگاه‌های بین‌المللی را می‌دهند.
 
 با خرید ویزا کارت آمریکا می‌توانید بدون نیاز به حساب بانکی بین‌المللی، خرید از فروشگاه‌های خارجی، پرداخت در وب‌سایت‌های معتبر جهانی و فعال‌سازی انواع سرویس‌های آنلاین مانند نتفلیکس، آمازون، اپل و گوگل را تجربه کنید.
-            <div class="flex gap-4">
+            <!-- <div class="flex gap-4">
                 <button class="bg-gradient-to-r from-[#1B6CA8] to-[#3282B8] px-10 py-4 rounded-xl font-bold shadow-lg shadow-blue-900/20 hover:scale-105 transition-transform">
+                    ساخت ویزا کارت
+                </button>
+            </div> -->
+            <div class="flex flex-col sm:flex-row gap-4 w-full mt-6" data-aos="fade-up" data-aos-delay="200">
+                <button class="w-full sm:w-auto bg-gradient-to-r from-[#1B6CA8] to-[#3282B8] px-10 py-4 rounded-xl font-bold shadow-lg shadow-blue-900/20 hover:scale-105 transition-transform text-center flex justify-center items-center">
                     ساخت ویزا کارت
                 </button>
             </div>
@@ -133,58 +145,72 @@
         
     </main>
 
-    <section class="container mx-auto px-6 py-12 md:py-24">
-        <div class="text-center mb-12">
-            <h2 class="text-3xl md:text-4xl font-extrabold mb-4">امکانات <span class="text-[#3282B8]">بی‌نظیر</span> کارتی پی</h2>
+    <section class="container mx-auto max-w-7xl px-6 md:px-12 lg:px-20 py-16 md:py-24 relative z-10">        <div class="text-center mb-16">
+            <h2 class="text-3xl md:text-5xl font-extrabold mb-4">امکانات <span class="text-transparent bg-clip-text bg-gradient-to-l from-[#BBE1FA] to-[#3282B8]">بی‌نظیر</span> کارتی پی</h2>
+            <p class="text-white/40 text-sm font-medium">تجربه پرداختی فراتر از مرزها با تکنولوژی روز دنیا</p>
         </div>
     
-        <div class="grid grid-cols-1 md:grid-cols-4 gap-6 auto-rows-[250px]">
+        <div class="grid grid-cols-1 md:grid-cols-4 md:grid-rows-2 gap-6 auto-rows-[280px]">
             
-            <div class="md:col-span-2 md:row-span-2 glass-effect rounded-[2rem] overflow-hidden group relative p-8 flex flex-col justify-end border hover:border-[#3282B8]/50 transition-all duration-500">
-                <div class="absolute inset-0 bg-gradient-to-t from-[#0F172A] via-[#0F172A]/80 to-transparent z-10"></div>
-                <img src="assests/b1.jpg" alt="Global Acceptance" class="absolute inset-0 w-full h-full object-cover opacity-50 group-hover:scale-110 transition-transform duration-700 blur-[2px] group-hover:blur-0">
-                <div class="relative z-20">
-                    <div class="w-14 h-14 bg-[#3282B8] rounded-2xl flex items-center justify-center mb-6 shadow-lg shadow-blue-500/30">
-                        <i class="fa-solid fa-globe text-2xl text-white"></i>
+            <div class="md:col-span-2 md:row-span-2 rounded-[2.5rem] overflow-hidden group relative flex flex-col justify-end border border-white/10 hover:border-[#3282B8]/50 transition-all duration-500 shadow-2xl">
+                <img src="assests/b1.jpg" alt="Global Acceptance" class="absolute inset-0 w-full h-full object-cover opacity-50 group-hover:scale-110 group-hover:opacity-70 transition-all duration-700">
+                <div class="absolute inset-0 bg-gradient-to-t from-[#0F172A] via-[#0F172A]/70 to-transparent"></div>
+                
+                <div class="relative z-10 p-8 md:p-10">
+                    <div class="w-16 h-16 bg-white/10 backdrop-blur-md rounded-2xl flex items-center justify-center mb-6 border border-white/20 shadow-lg group-hover:-translate-y-2 transition-transform duration-500">
+                        <i class="fa-solid fa-globe text-3xl text-white"></i>
                     </div>
-                    <h3 class="text-3xl font-black mb-3 text-white">پذیرش جهانی در تمامی درگاه‌ها</h3>
-                    <p class="text-white/70 leading-relaxed text-sm">از Stripe و PayPal گرفته تا خریدهای روزمره. کارت‌های ما در تمام وب‌سایت‌های جهان بدون کوچکترین مشکل پذیرفته می‌شوند.</p>
+                    <h3 class="text-3xl font-black mb-4 text-white">پذیرش جهانی در تمامی درگاه‌ها</h3>
+                    <p class="text-white/80 leading-relaxed text-sm max-w-md">از Stripe و PayPal گرفته تا خریدهای روزمره. کارت‌های ما در تمام وب‌سایت‌های جهان بدون کوچکترین مشکل پذیرفته می‌شوند.</p>
                 </div>
             </div>
     
-            <div class="md:col-span-2 glass-effect rounded-[2rem] p-8 relative overflow-hidden group border hover:border-[#3282B8]/50 transition-all duration-500 flex items-center gap-6">
-                <div class="flex-1 z-10">
-                    <div class="w-10 h-10 bg-white/10 rounded-xl flex items-center justify-center mb-4">
-                        <i class="fa-solid fa-building-columns text-[#BBE1FA]"></i>
+            <div class="md:col-span-2 rounded-[2.5rem] overflow-hidden group relative flex items-center border border-white/10 hover:border-[#3282B8]/50 transition-all duration-500">
+                <img src="assests/b2.jpg" alt="Corporate" class="absolute inset-0 w-full h-full object-cover opacity-30 group-hover:scale-110 group-hover:opacity-50 transition-all duration-700">
+                <div class="absolute inset-0 bg-gradient-to-r from-[#0F172A] via-[#0F172A]/80 to-transparent"></div>
+                
+                <div class="relative z-10 p-8 flex gap-6 items-center">
+                    <div class="w-14 h-14 bg-white/10 backdrop-blur-md rounded-2xl flex-shrink-0 flex items-center justify-center border border-white/20 group-hover:rotate-12 transition-transform duration-500 shadow-lg">
+                        <i class="fa-solid fa-building-columns text-[#BBE1FA] text-2xl"></i>
                     </div>
-                    <h3 class="text-xl font-bold mb-2">حساب‌های حقوقی (شرکتی)</h3>
-                    <p class="text-white/50 text-xs leading-loose">صدور کارت روی حساب تجاری Business Account بدون محدودیت‌های شخصی معمول.</p>
+                    <div>
+                        <h3 class="text-2xl font-bold mb-2 text-white">حساب‌های حقوقی (شرکتی)</h3>
+                        <p class="text-white/60 text-sm leading-relaxed">صدور کارت روی حساب تجاری Business Account بدون محدودیت‌های شخصی معمول.</p>
+                    </div>
                 </div>
-                <div class="w-32 h-32 bg-gradient-to-tr from-[#3282B8]/20 to-transparent rounded-full blur-2xl absolute left-[-20px] bottom-[-20px]"></div>
             </div>
     
-            <div class="md:col-span-1 glass-effect rounded-[2rem] p-8 relative overflow-hidden group border hover:border-[#3282B8]/50 transition-all duration-500">
-                <div class="w-10 h-10 bg-white/10 rounded-xl flex items-center justify-center mb-4">
-                    <i class="fa-solid fa-robot text-[#BBE1FA]"></i>
+            <div class="md:col-span-1 rounded-[2.5rem] overflow-hidden group relative flex flex-col justify-end border border-white/10 hover:border-[#3282B8]/50 transition-all duration-500 p-8">
+                <img src="assests/b3.jpg" alt="AI" class="absolute inset-0 w-full h-full object-cover opacity-30 group-hover:scale-110 group-hover:opacity-50 transition-all duration-700">
+                <div class="absolute inset-0 bg-gradient-to-t from-[#0F172A] to-transparent"></div>
+                
+                <div class="relative z-10">
+                    <div class="w-12 h-12 bg-white/10 backdrop-blur-md rounded-2xl flex items-center justify-center mb-4 border border-white/20 group-hover:scale-110 transition-transform duration-500 shadow-lg">
+                        <i class="fa-solid fa-robot text-[#BBE1FA] text-xl"></i>
+                    </div>
+                    <h3 class="text-lg font-bold mb-2 text-white">سازگار با هوش مصنوعی</h3>
+                    <p class="text-white/60 text-xs leading-relaxed">پرداخت بی‌دردسر اشتراک ChatGPT و Midjourney.</p>
                 </div>
-                <h3 class="text-lg font-bold mb-2">سازگار با هوش مصنوعی</h3>
-                <p class="text-white/50 text-[11px] leading-loose">پرداخت بی‌دردسر اشتراک ChatGPT، Midjourney و Claude.</p>
             </div>
     
-            <div class="md:col-span-1 bg-gradient-to-br from-[#1B6CA8] to-[#0F172A] rounded-[2rem] p-8 relative overflow-hidden group border border-[#3282B8]/30 hover:shadow-[0_0_30px_rgba(50,130,184,0.3)] transition-all duration-500">
-                <div class="w-10 h-10 bg-white/20 rounded-xl flex items-center justify-center mb-4">
-                    <i class="fa-solid fa-shield-halved text-white"></i>
+            <div class="md:col-span-1 rounded-[2.5rem] overflow-hidden group relative flex flex-col justify-end border border-[#3282B8]/30 hover:shadow-[0_0_30px_rgba(50,130,184,0.3)] transition-all duration-500 p-8">
+                <img src="assests/b4.jpg" alt="Security" class="absolute inset-0 w-full h-full object-cover opacity-20 group-hover:scale-110 transition-all duration-700 mix-blend-overlay">
+                <div class="absolute inset-0 bg-gradient-to-t from-[#1B6CA8] to-[#0F172A]/80"></div>
+                
+                <div class="relative z-10">
+                    <div class="w-12 h-12 bg-white/20 backdrop-blur-md rounded-2xl flex items-center justify-center mb-4 border border-white/30 group-hover:-translate-y-2 transition-transform duration-500 shadow-lg">
+                        <i class="fa-solid fa-shield-halved text-white text-xl"></i>
+                    </div>
+                    <h3 class="text-lg font-bold mb-2 text-white">امنیت فوق پیشرفته</h3>
+                    <p class="text-white/80 text-xs leading-relaxed">کنترل کامل تراکنش‌ها و مسدودسازی آنی کارت.</p>
                 </div>
-                <h3 class="text-lg font-bold mb-2">امنیت فوق پیشرفته</h3>
-                <p class="text-white/70 text-[11px] leading-loose">کنترل کامل تراکنش‌ها و مسدودسازی آنی کارت با یک کلیک.</p>
             </div>
     
         </div>
     </section>
 
 
-<section class="container mx-auto px-6 py-12 md:py-24 relative">
-    <div class="glass-effect rounded-[2.5rem] p-8 md:p-10 flex flex-col md:flex-row items-center gap-10 relative overflow-hidden max-w-5xl mx-auto">
+    <section class="container mx-auto max-w-7xl px-6 md:px-12 lg:px-20 py-16 md:py-24 relative z-10">    <div class="glass-effect rounded-[2.5rem] p-8 md:p-10 flex flex-col md:flex-row items-center gap-10 relative overflow-hidden max-w-5xl mx-auto">
         
         <div class="md:w-1/2 relative flex justify-center items-center w-full px-4 md:px-0">
             <div class="bg-gradient-to-br from-[#1B262C] to-[#0F172A] w-full max-w-[280px] sm:max-w-[320px] md:max-w-md aspect-[1.58/1] rounded-2xl p-5 md:p-6 relative shadow-2xl border border-white/10 z-10 flex flex-col justify-between mx-auto">
@@ -200,7 +226,7 @@
             </div>
         </div>
 
-        <div class="md:w-1/2 flex flex-col gap-5 text-right">
+        <div class="md:w-1/2 flex flex-col gap-5 text-right md:text-center">
             <h2 class="text-2xl md:text-3xl font-bold">چرا <span class="text-[#3282B8]">سرویس ما؟</span></h2>
             
             <div class="space-y-4">
@@ -246,13 +272,101 @@
     </div>
 </section>
 
-<section class="container mx-auto px-6 py-12 md:py-24 relative">
+<section class="container mx-auto max-w-7xl px-6 md:px-12 lg:px-20 py-16 md:py-24 relative z-10">
+    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full max-w-3xl bg-[#3282B8]/10 blur-[120px] rounded-full z-0 pointer-events-none"></div>
+
+    <div class="relative z-10 space-y-20">
+        
+        <div class="text-center max-w-4xl mx-auto">
+            <h2 class="text-3xl md:text-5xl font-extrabold mb-6 leading-tight">ویزا کارت مجازی آمریکا<br><span class="text-[#3282B8] text-2xl md:text-3xl mt-2 block">راه‌حل کامل پرداخت بین‌المللی</span></h2>
+            <p class="text-white/70 text-base md:text-lg leading-relaxed mb-4">
+                یک راه‌حل پیشرفته و امن برای پرداخت‌های بین‌المللی که بدون نیاز به حساب بانکی، امکان خرید در تمام سایت‌های جهانی را فراهم می‌کند.
+            </p>
+            <p class="text-[#BBE1FA]/80 text-sm md:text-base leading-relaxed bg-[#3282B8]/10 inline-block px-6 py-3 rounded-2xl border border-[#3282B8]/20">
+                این کارت‌ها از نوع <strong>Corporate Debit Card</strong> با <strong>BIN تجاری معتبر آمریکا</strong> هستند که برای استفاده تجاری و حرفه‌ای طراحی شده‌اند.
+            </p>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+            <div class="lg:col-span-7 space-y-8">
+                
+                <div class="glass-effect rounded-[2rem] p-8 border border-white/5">
+                    <h3 class="text-xl font-bold mb-6 flex items-center gap-3">
+                        <i class="fa-solid fa-layer-group text-[#3282B8]"></i>
+                        کاربردهای اصلی
+                    </h3>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div class="flex items-start gap-3"><i class="fa-solid fa-bullhorn text-[#BBE1FA] mt-1 text-sm"></i><p class="text-white/60 text-sm"><strong class="text-white/90">تبلیغات:</strong> Google, Meta, Twitter</p></div>
+                        <div class="flex items-start gap-3"><i class="fa-solid fa-cart-shopping text-[#BBE1FA] mt-1 text-sm"></i><p class="text-white/60 text-sm"><strong class="text-white/90">فروشگاه‌ها:</strong> Amazon, eBay, AliExpress</p></div>
+                        <div class="flex items-start gap-3"><i class="fa-solid fa-clapperboard text-[#BBE1FA] mt-1 text-sm"></i><p class="text-white/60 text-sm"><strong class="text-white/90">اشتراک‌ها:</strong> Netflix, Spotify, Adobe</p></div>
+                        <div class="flex items-start gap-3"><i class="fa-solid fa-cloud text-[#BBE1FA] mt-1 text-sm"></i><p class="text-white/60 text-sm"><strong class="text-white/90">سرویس SaaS:</strong> ابزارهای ابری و هوش مصنوعی</p></div>
+                        <div class="flex items-start gap-3"><i class="fa-solid fa-mobile-screen text-[#BBE1FA] mt-1 text-sm"></i><p class="text-white/60 text-sm"><strong class="text-white/90">اپ‌استورها:</strong> Apple, Google Play</p></div>
+                        <div class="flex items-start gap-3"><i class="fa-solid fa-credit-card text-[#BBE1FA] mt-1 text-sm"></i><p class="text-white/60 text-sm"><strong class="text-white/90">درگاه‌ها:</strong> Stripe, PayPal, Shopify</p></div>
+                    </div>
+                </div>
+
+                <div class="bg-gradient-to-br from-[#1B262C] to-[#0F172A] rounded-[2rem] p-8 border border-[#3282B8]/30">
+                    <h3 class="text-xl font-bold mb-4 flex items-center gap-3">
+                        <i class="fa-solid fa-shield-check text-green-400"></i>
+                        امنیت و کنترل مطلق
+                    </h3>
+                    <p class="text-white/60 text-sm leading-loose">
+                        پیروی کامل از استانداردهای <strong>PCI DSS</strong> و رمزنگاری <strong>SSL/TLS</strong>. کارت‌ها دقیقاً به نام شما صادر می‌شوند و شما در پنل کاربری کنترل کامل روی فعال/غیرفعال کردن آنی و مشاهده تراکنش‌ها دارید.
+                    </p>
+                </div>
+            </div>
+
+            <div class="lg:col-span-5">
+                <div class="glass-effect rounded-[2rem] p-8 border border-white/5 h-full flex flex-col">
+                    <h3 class="text-xl font-bold mb-6 flex items-center gap-3">
+                        <i class="fa-solid fa-microchip text-[#3282B8]"></i>
+                        مشخصات فنی کارت
+                    </h3>
+                    
+                    <div class="space-y-4 flex-1">
+                        <div class="flex justify-between items-center border-b border-white/5 pb-3">
+                            <span class="text-white/40 text-sm">نوع کارت</span>
+                            <span class="text-white font-bold text-sm">Corporate Debit Card</span>
+                        </div>
+                        <div class="flex justify-between items-center border-b border-white/5 pb-3">
+                            <span class="text-white/40 text-sm">کشور صادرکننده</span>
+                            <span class="text-white font-bold text-sm">ایالات متحده (USA)</span>
+                        </div>
+                        <div class="flex justify-between items-center border-b border-white/5 pb-3">
+                            <span class="text-white/40 text-sm">نوع BIN</span>
+                            <span class="text-[#BBE1FA] font-bold text-sm">تجاری معتبر (Commercial)</span>
+                        </div>
+                        <div class="flex justify-between items-center border-b border-white/5 pb-3">
+                            <span class="text-white/40 text-sm">ارز پایه</span>
+                            <span class="text-white font-bold text-sm text-left dir-ltr">USD ($)</span>
+                        </div>
+                        <div class="flex justify-between items-center border-b border-white/5 pb-3">
+                            <span class="text-white/40 text-sm">اعتبار و زمان صدور</span>
+                            <span class="text-white font-bold text-sm">۳ سال - زیر ۱۰ ثانیه</span>
+                        </div>
+                        <div class="flex justify-between items-center pb-2">
+                            <span class="text-white/40 text-sm">محدوده شارژ</span>
+                            <span class="text-white font-bold text-sm text-left dir-ltr">$1 - $100,000</span>
+                        </div>
+                    </div>
+
+                    <button class="w-full mt-8 bg-[#3282B8]/10 hover:bg-[#3282B8] text-[#BBE1FA] hover:text-white border border-[#3282B8]/50 py-4 rounded-xl font-bold transition-all duration-300">
+                        مشاهده تعرفه‌ها و صدور
+                    </button>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<section class="container mx-auto max-w-7xl px-6 md:px-12 lg:px-20 py-16 md:py-24 relative z-10">
     <div class="text-center mb-20">
         <h2 class="text-3xl md:text-4xl font-extrabold mb-4">مراحل دریافت کارت در <span class="text-[#3282B8]">۲ دقیقه</span></h2>
         <p class="text-white/40 text-sm">چگونه ویزا کارت مجازی آمریکا دریافت کنیم؟ در ۴ مرحله ساده و سریع</p>
     </div>
 
-    <div class="relative flex flex-col md:flex-row justify-between items-start gap-12 md:gap-4">
+    <div class="relative flex flex-col md:flex-row justify-between items-center md:items-start gap-12 md:gap-4">
         
         <div class="hidden md:block absolute top-12 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-[#3282B8]/30 to-transparent z-0"></div>
 
@@ -297,7 +411,7 @@
     </div>
 </section>
 
-<section class="container mx-auto px-6 py-12 md:py-24 relative">
+<section class="container mx-auto max-w-7xl px-6 md:px-12 lg:px-20 py-16 md:py-24 relative z-10">
     <div class="text-center mb-16">
         <h2 class="text-3xl md:text-4xl font-bold mb-4">پاسخ به <span class="text-[#3282B8]">سوالات شما</span></h2>
         <p class="text-white/40 text-sm italic">هر آنچه باید درباره ویزا کارت‌های هوشمند بدانید</p>
@@ -355,7 +469,7 @@
 </section>
     
 
-<section class="container mx-auto px-6 py-12 md:py-24 relative">
+<section class="container mx-auto max-w-7xl px-6 md:px-12 lg:px-20 py-16 md:py-24 relative z-10">
     <div class="relative group">
         <div class="absolute -inset-1 bg-gradient-to-r from-[#3282B8] to-[#1B262C] rounded-[2.5rem] blur opacity-25 group-hover:opacity-50 transition duration-1000"></div>
         
@@ -371,7 +485,7 @@
     </div>
 </section>
 
-<footer class="container mx-auto px-6 pt-20 pb-10">
+<footer class="container mx-auto max-w-7xl px-6 md:px-12 lg:px-20 py-16 md:py-24 relative z-10">
     <div class="glass-effect rounded-t-[3rem] p-12 border-t border-white/10 bg-gradient-to-b from-white/[0.03] to-transparent">
         <div class="grid grid-cols-1 md:grid-cols-3 gap-12 items-center">
             
@@ -416,7 +530,7 @@
         </div>
     </div>
 </footer>
-
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
 document.addEventListener("DOMContentLoaded", () => {
         const faqButtons = document.querySelectorAll('.glass-effect button.group');
@@ -438,6 +552,22 @@ document.addEventListener("DOMContentLoaded", () => {
             });
         });
     });
+    // const header = document.querySelector('header');
+    //     window.addEventListener('scroll', () => {
+    //         if (window.scrollY > 50) {
+    //             header.classList.add('glass-effect', 'fixed', 'top-0', 'left-0', 'right-0', 'z-50', 'py-4', 'shadow-lg' , 'rounded-lg');
+    //             header.classList.remove('py-8');
+    //         } else {
+    //             header.classList.remove('glass-effect', 'fixed', 'top-0', 'left-0', 'right-0', 'z-50', 'py-4', 'shadow-lg' , 'rounded-lg');
+    //             header.classList.add('py-8');
+    //         }
+    //     });
+        AOS.init({
+            duration: 800,
+            once: true,
+            offset: 100,
+        });
     </script>
+    
 </body>
 </html>

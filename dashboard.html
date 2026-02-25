@@ -165,7 +165,7 @@
             </div>
         </aside>
 
-        <main class="flex-1">
+        <main class="flex-1 pb-28 lg:pb-0">
             
             <div id="cards-section" class="section-content space-y-8 animate-in fade-in duration-500">
                 <div class="flex justify-between items-center">
@@ -261,7 +261,7 @@
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div class="balance-card rounded-[2.5rem] p-8 shadow-xl border border-white/10">
                         <span class="text-white/60 text-sm font-bold">موجودی فعلی (تومان)</span>
-                        <div class="text-4xl font-black mt-4">۲,۴۵۰,۰۰۰</div>
+                        <div class="text-4xl font-black mt-4 animate-counter" data-target="2450000">0</div>
                         <div class="mt-8 text-[10px] text-white/30 tracking-widest font-mono">AniCards Secure Wallet</div>
                     </div>
 <div class="glass rounded-[2.5rem] p-6 space-y-5">
@@ -391,6 +391,62 @@
 function setAmount(value) {
     document.getElementById('custom-amount').value = value;
 }
+
+function copyToClipboard(text, element) {
+    navigator.clipboard.writeText(text).then(() => {
+        // نمایش پیغام
+        const toast = document.getElementById('toast');
+        toast.classList.remove('translate-y-20', 'opacity-0');
+        
+        // افکت کلیک روی خود دکمه/آیکون
+        if(element) {
+            const originalIcon = element.innerHTML;
+            element.innerHTML = '<i class="fa-solid fa-check text-green-400"></i>';
+            setTimeout(() => { element.innerHTML = originalIcon; }, 2000);
+        }
+
+        // مخفی کردن پیغام بعد از ۳ ثانیه
+        setTimeout(() => {
+            toast.classList.add('translate-y-20', 'opacity-0');
+        }, 3000);
+    });
+}document.addEventListener("DOMContentLoaded", () => {
+    const counters = document.querySelectorAll('.animate-counter');
+    const speed = 200; // هرچه کمتر، سرعت بیشتر
+
+    const animateCounters = (entries, observer) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const counter = entry.target;
+                const updateCount = () => {
+                    const target = +counter.getAttribute('data-target');
+                    // حذف کاما برای محاسبات
+                    const currentString = counter.innerText.replace(/,/g, '');
+                    const count = +currentString;
+                    const inc = target / speed;
+
+                    if (count < target) {
+                        // فرمت کردن عدد با کاما (مثلا 2,450,000)
+                        counter.innerText = Math.ceil(count + inc).toLocaleString('en-US');
+                        setTimeout(updateCount, 15); // فریم‌ریت انیمیشن
+                    } else {
+                        counter.innerText = target.toLocaleString('en-US');
+                    }
+                };
+                updateCount();
+                observer.unobserve(counter); // انیمیشن فقط یک بار اجرا شه
+            }
+        });
+    };
+
+    const counterObserver = new IntersectionObserver(animateCounters, { threshold: 0.5 });
+    counters.forEach(counter => counterObserver.observe(counter));
+});
     </script>
+
+<div id="toast" class="fixed bottom-5 right-5 transform translate-y-20 opacity-0 pointer-events-none bg-gradient-to-r from-[#1B6CA8] to-[#3282B8] text-white px-6 py-3 rounded-xl shadow-[0_10px_30px_rgba(50,130,184,0.3)] flex items-center gap-3 transition-all duration-300 z-[9999]">
+    <i class="fa-solid fa-circle-check text-green-400"></i>
+    <span class="text-sm font-bold">در کلیپ‌بورد کپی شد!</span>
+</div>
 </body>
 </html>
