@@ -1,138 +1,222 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="fa" dir="rtl">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
+    />
     <title>کارتی پی - خرید ویزا کارت مجازی آمریکا | پرداخت بین المللی</title>
-    <link rel="icon" type="image/png" href="assests/logo.png">
+    <link rel="icon" href="/assests/favicon.ico">
+    <link rel="icon" type="image/png" sizes="16x16" href="assests/favicon-16x16.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="assests/favicon-32x32.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="assests/apple-touch-icon.png">
     <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://kit.fontawesome.com/85879a8cdb.js" crossorigin="anonymous"></script>
+    <script
+      src="https://kit.fontawesome.com/85879a8cdb.js"
+      crossorigin="anonymous"
+    ></script>
 
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Vazirmatn:wght@100;400;700;900&display=swap');
-        
-        body {
-            font-family: 'Vazirmatn', sans-serif;
-            background: #0F172A;
-            color: white;
-            overflow: hidden;
-        }
+      @import url("https://fonts.googleapis.com/css2?family=Vazirmatn:wght@100;400;700;900&display=swap");
 
-        /* افکت Mesh Gradient متحرک برای پس‌زمینه */
-        .bg-glow {
-            position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background: radial-gradient(circle at 10% 20%, rgba(50, 130, 184, 0.15) 0%, transparent 40%),
-                        radial-gradient(circle at 90% 80%, rgba(27, 38, 44, 0.2) 0%, transparent 40%);
-            z-index: -1;
-        }
+      body {
+        font-family: "Vazirmatn", sans-serif;
+        background: #0f172a;
+        color: white;
+        overflow: hidden;
+      }
 
-        .glass {
-            background: rgba(255, 255, 255, 0.03);
-            backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-        }
+      /* افکت Mesh Gradient متحرک برای پس‌زمینه */
+      .bg-glow {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background:
+          radial-gradient(
+            circle at 10% 20%,
+            rgba(50, 130, 184, 0.15) 0%,
+            transparent 40%
+          ),
+          radial-gradient(
+            circle at 90% 80%,
+            rgba(27, 38, 44, 0.2) 0%,
+            transparent 40%
+          );
+        z-index: -1;
+      }
 
-        .input-glass {
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            transition: all 0.3s ease;
-        }
+      .glass {
+        background: rgba(255, 255, 255, 0.03);
+        backdrop-filter: blur(20px);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+      }
 
-        .input-glass:focus {
-            background: rgba(255, 255, 255, 0.1);
-            border-color: #3282B8;
-            outline: none;
-            box-shadow: 0 0 15px rgba(50, 130, 184, 0.3);
-        }
+      .input-glass {
+        background: rgba(255, 255, 255, 0.05);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        transition: all 0.3s ease;
+      }
 
-        /* انیمیشن برای تغییر تب‌ها */
-        .tab-active {
-            background: #3282B8 !important;
-            color: white !important;
-            box-shadow: 0 4px 15px rgba(50, 130, 184, 0.4);
-        }
+      .input-glass:focus {
+        background: rgba(255, 255, 255, 0.1);
+        border-color: #3282b8;
+        outline: none;
+        box-shadow: 0 0 15px rgba(50, 130, 184, 0.3);
+      }
+
+      /* انیمیشن برای تغییر تب‌ها */
+      .tab-active {
+        background: #3282b8 !important;
+        color: white !important;
+        box-shadow: 0 4px 15px rgba(50, 130, 184, 0.4);
+      }
     </style>
-</head>
-<body class="flex items-center justify-center min-h-screen p-6">
-
+  </head>
+  <body class="flex items-center justify-center min-h-screen p-6">
     <div class="bg-glow"></div>
 
     <div class="w-full max-w-md">
-        
-        <div class="text-center mb-8">
-            <img src="assests/logo.png" alt="AniCards" class="mx-auto h-16 w-auto">
+      <div class="text-center mb-8">
+        <img
+          src="assests/logo.png"
+          alt="AniCards"
+          class="mx-auto h-16 w-auto"
+        />
+      </div>
+
+      <div class="glass rounded-[2.5rem] p-8 shadow-2xl">
+        <div class="flex bg-white/5 rounded-2xl p-1 mb-8">
+          <button
+            id="loginTab"
+            onclick="switchTab('login')"
+            class="flex-1 py-3 rounded-xl text-sm font-bold transition-all duration-300 tab-active"
+          >
+            ورود
+          </button>
+          <button
+            id="registerTab"
+            onclick="switchTab('register')"
+            class="flex-1 py-3 rounded-xl text-sm font-bold text-white/40 transition-all duration-300"
+          >
+            ثبت‌نام
+          </button>
         </div>
 
-        <div class="glass rounded-[2.5rem] p-8 shadow-2xl">
-            
-            <div class="flex bg-white/5 rounded-2xl p-1 mb-8">
-                <button id="loginTab" onclick="switchTab('login')" class="flex-1 py-3 rounded-xl text-sm font-bold transition-all duration-300 tab-active">ورود</button>
-                <button id="registerTab" onclick="switchTab('register')" class="flex-1 py-3 rounded-xl text-sm font-bold text-white/40 transition-all duration-300">ثبت‌نام</button>
+        <form id="loginForm" class="space-y-5">
+          <div class="text-center mb-6">
+            <h2 class="text-xl font-bold">خوش آمدید</h2>
+            <p class="text-white/40 text-xs mt-1">
+              شماره موبایل و رمز خود را وارد کنید
+            </p>
+          </div>
+
+          <div class="space-y-4">
+            <div class="relative">
+              <input
+                type="text"
+                placeholder="شماره موبایل"
+                class="w-full input-glass rounded-xl px-5 py-4 text-right dir-ltr text-sm"
+                dir="ltr"
+              />
+              <i
+                class="fa-solid fa-mobile-screen-button absolute left-4 top-5 opacity-80"
+                style="color: rgb(255, 255, 255)"
+              ></i>
             </div>
 
-            <form id="loginForm" class="space-y-5">
-                <div class="text-center mb-6">
-                    <h2 class="text-xl font-bold">خوش آمدید</h2>
-                    <p class="text-white/40 text-xs mt-1">شماره موبایل و رمز خود را وارد کنید</p>
-                </div>
+            <div class="relative">
+              <input
+                type="password"
+                placeholder="رمز عبور"
+                class="w-full input-glass rounded-xl px-5 py-4 text-right dir-ltr text-sm"
+                dir="ltr"
+              />
+              <i
+                class="fa-solid fa-lock absolute left-4 top-5 opacity-80"
+                style="color: rgb(255, 255, 255)"
+              ></i>
+            </div>
+          </div>
 
-                <div class="space-y-4">
-                    <div class="relative">
-                        <input type="text" placeholder="شماره موبایل" class="w-full input-glass rounded-xl px-5 py-4 text-right dir-ltr text-sm" dir="ltr">
-                        <i class="fa-solid fa-mobile-screen-button absolute left-4 top-5 opacity-80" style="color: rgb(255, 255, 255);"></i>
-                    </div>
+          <div class="flex justify-between items-center text-[11px] px-1">
+            <label
+              class="flex items-center gap-2 cursor-pointer opacity-60 hover:opacity-100"
+            >
+              <input type="checkbox" class="accent-[#3282B8]" /> مرا به خاطر
+              بسپار
+            </label>
+            <a href="#" class="text-[#3282B8] hover:underline"
+              >فراموشی رمز عبور؟</a
+            >
+          </div>
 
-                    <div class="relative">
-                        <input type="password" placeholder="رمز عبور" class="w-full input-glass rounded-xl px-5 py-4 text-right dir-ltr text-sm" dir="ltr">
-                        <i class="fa-solid fa-lock absolute left-4 top-5 opacity-80" style="color: rgb(255, 255, 255);"></i>
-                    </div>
-                </div>
+          <button
+            class="w-full bg-[#3282B8] hover:bg-[#1B6CA8] text-white py-4 rounded-xl font-bold transition-all shadow-lg shadow-blue-900/20 mt-4"
+          >
+            تایید و دریافت کد
+          </button>
+        </form>
 
-                <div class="flex justify-between items-center text-[11px] px-1">
-                    <label class="flex items-center gap-2 cursor-pointer opacity-60 hover:opacity-100">
-                        <input type="checkbox" class="accent-[#3282B8]"> مرا به خاطر بسپار
-                    </label>
-                    <a href="#" class="text-[#3282B8] hover:underline">فراموشی رمز عبور؟</a>
-                </div>
+        <form id="registerForm" class="space-y-5 hidden">
+          <div class="text-center mb-6">
+            <h2 class="text-xl font-bold">ایجاد حساب کاربری</h2>
+            <p class="text-white/40 text-xs mt-1">
+              برای شروع، اطلاعات خود را وارد کنید
+            </p>
+          </div>
 
-                <button class="w-full bg-[#3282B8] hover:bg-[#1B6CA8] text-white py-4 rounded-xl font-bold transition-all shadow-lg shadow-blue-900/20 mt-4">
-                    تایید و دریافت کد
-                </button>
-            </form>
+          <div class="space-y-4">
+            <div class="relative">
+              <input
+                type="text"
+                placeholder="شماره موبایل"
+                class="w-full input-glass rounded-xl px-5 py-4 text-right dir-ltr text-sm"
+                dir="ltr"
+              />
+              <i
+                class="fa-solid fa-mobile-screen-button absolute left-4 top-5 opacity-80"
+                style="color: rgb(255, 255, 255)"
+              ></i>
+            </div>
 
-            <form id="registerForm" class="space-y-5 hidden">
-                <div class="text-center mb-6">
-                    <h2 class="text-xl font-bold">ایجاد حساب کاربری</h2>
-                    <p class="text-white/40 text-xs mt-1">برای شروع، اطلاعات خود را وارد کنید</p>
-                </div>
+            <div class="relative">
+              <input
+                type="text"
+                placeholder="نام کاربری"
+                class="w-full input-glass rounded-xl px-5 py-4 text-right dir-ltr text-sm"
+                dir="ltr"
+              />
+              <i
+                class="fa-solid fa-user absolute left-4 top-5 opacity-80"
+                style="color: rgb(255, 255, 255)"
+              ></i>
+            </div>
+          </div>
 
-                <div class="space-y-4">
-                    <div class="relative">
-                        <input type="text" placeholder="شماره موبایل" class="w-full input-glass rounded-xl px-5 py-4 text-right dir-ltr text-sm" dir="ltr">
-                        <i class="fa-solid fa-mobile-screen-button absolute left-4 top-5 opacity-80" style="color: rgb(255, 255, 255);"></i>
-                    </div>
+          <p class="text-[10px] text-white/30 text-center leading-loose">
+            با ثبت‌نام در آنی‌کارت،
+            <a href="#" class="text-[#3282B8]">قوانین و مقررات</a> سرویس را
+            می‌پذیرم.
+          </p>
 
-                    <div class="relative">
-                        <input type="text" placeholder="نام کاربری" class="w-full input-glass rounded-xl px-5 py-4 text-right dir-ltr text-sm" dir="ltr">
-                        <i class="fa-solid fa-user absolute left-4 top-5 opacity-80" style="color: rgb(255, 255, 255);"></i>
-                    </div>
-                </div>
+          <button
+            class="w-full bg-[#3282B8] hover:bg-[#1B6CA8] text-white py-4 rounded-xl font-bold transition-all shadow-lg shadow-blue-900/20 mt-4"
+          >
+            تایید و دریافت کد
+          </button>
+        </form>
+      </div>
 
-                <p class="text-[10px] text-white/30 text-center leading-loose">
-                    با ثبت‌نام در آنی‌کارت، <a href="#" class="text-[#3282B8]">قوانین و مقررات</a> سرویس را می‌پذیرم.
-                </p>
-
-                <button class="w-full bg-[#3282B8] hover:bg-[#1B6CA8] text-white py-4 rounded-xl font-bold transition-all shadow-lg shadow-blue-900/20 mt-4">
-                    تایید و دریافت کد
-                </button>
-            </form>
-
-        </div>
-
-        <div class="text-center mt-8">
-            <a href="index.html" class="text-white/30 hover:text-white text-xs transition-colors">← بازگشت به صفحه اصلی</a>
-        </div>
+      <div class="text-center mt-8">
+        <a
+          href="index.html"
+          class="text-white/30 hover:text-white text-xs transition-colors"
+          >← بازگشت به صفحه اصلی</a
+        >
+      </div>
     </div>
 
     <!-- <form id="otpForm" class="space-y-8">
@@ -171,61 +255,61 @@
 </form> -->
 
     <script>
-        function switchTab(type) {
-            const loginForm = document.getElementById('loginForm');
-            const registerForm = document.getElementById('registerForm');
-            const loginTab = document.getElementById('loginTab');
-            const registerTab = document.getElementById('registerTab');
+      function switchTab(type) {
+        const loginForm = document.getElementById("loginForm");
+        const registerForm = document.getElementById("registerForm");
+        const loginTab = document.getElementById("loginTab");
+        const registerTab = document.getElementById("registerTab");
 
-            if (type === 'login') {
-                loginForm.classList.remove('hidden');
-                registerForm.classList.add('hidden');
-                loginTab.classList.add('tab-active');
-                registerTab.classList.remove('tab-active');
-                registerTab.classList.add('text-white/40');
-            } else {
-                loginForm.classList.add('hidden');
-                registerForm.classList.remove('hidden');
-                registerTab.classList.add('tab-active');
-                loginTab.classList.remove('tab-active');
-                loginTab.classList.add('text-white/40');
-            }
+        if (type === "login") {
+          loginForm.classList.remove("hidden");
+          registerForm.classList.add("hidden");
+          loginTab.classList.add("tab-active");
+          registerTab.classList.remove("tab-active");
+          registerTab.classList.add("text-white/40");
+        } else {
+          loginForm.classList.add("hidden");
+          registerForm.classList.remove("hidden");
+          registerTab.classList.add("tab-active");
+          loginTab.classList.remove("tab-active");
+          loginTab.classList.add("text-white/40");
         }
-            // اسکریپت جابجایی خودکار بین فیلدهای کد
-    const inputs = document.querySelectorAll('#otp-container input');
-    
-    inputs.forEach((input, index) => {
-        input.addEventListener('input', (e) => {
-            if (e.target.value.length === 1 && index < inputs.length - 1) {
-                inputs[index + 1].focus();
-            }
+      }
+      // اسکریپت جابجایی خودکار بین فیلدهای کد
+      const inputs = document.querySelectorAll("#otp-container input");
+
+      inputs.forEach((input, index) => {
+        input.addEventListener("input", (e) => {
+          if (e.target.value.length === 1 && index < inputs.length - 1) {
+            inputs[index + 1].focus();
+          }
         });
 
-        input.addEventListener('keydown', (e) => {
-            if (e.key === 'Backspace' && !e.target.value && index > 0) {
-                inputs[index - 1].focus();
-            }
+        input.addEventListener("keydown", (e) => {
+          if (e.key === "Backspace" && !e.target.value && index > 0) {
+            inputs[index - 1].focus();
+          }
         });
-    });
+      });
 
-    // اسکریپت تایمر معکوس
-    let time = 5;
-    const timerElement = document.getElementById('timer');
-    const resendBtn = document.getElementById('resendBtn');
+      // اسکریپت تایمر معکوس
+      let time = 5;
+      const timerElement = document.getElementById("timer");
+      const resendBtn = document.getElementById("resendBtn");
 
-    const countdown = setInterval(() => {
+      const countdown = setInterval(() => {
         let minutes = Math.floor(time / 60);
         let seconds = time % 60;
-        seconds = seconds < 10 ? '0' + seconds : seconds;
-        timerElement.querySelector('span').innerHTML = `0${minutes}:${seconds}`;
-        
+        seconds = seconds < 10 ? "0" + seconds : seconds;
+        timerElement.querySelector("span").innerHTML = `0${minutes}:${seconds}`;
+
         if (time <= 0) {
-            clearInterval(countdown);
-            timerElement.classList.add('hidden');
-            resendBtn.classList.remove('hidden');
+          clearInterval(countdown);
+          timerElement.classList.add("hidden");
+          resendBtn.classList.remove("hidden");
         }
         time--;
-    }, 1000);
+      }, 1000);
     </script>
-</body>
+  </body>
 </html>
