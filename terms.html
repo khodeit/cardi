@@ -4,8 +4,26 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>شرایط و ضوابط - کارتی پی</title>
-    <link rel="icon" href="/assests/favicon.ico">
+    <link rel="icon" href="/assests/favicon.ico" />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="assests/favicon-16x16.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="assests/favicon-32x32.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="assests/apple-touch-icon.png"
+    />
     <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@100;300;400;700;900&display=swap" rel="stylesheet">
     <script src="https://kit.fontawesome.com/85879a8cdb.js" crossorigin="anonymous"></script>
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
     <style>
@@ -13,21 +31,16 @@
       ::-webkit-scrollbar-track { background: #0f172a; }
       ::-webkit-scrollbar-thumb { background: #3282b8; border-radius: 10px; }
       ::-webkit-scrollbar-thumb:hover { background: #bbe1fa; }
-      
-      @font-face {
-        font-family: "YekanBold";
-        src: url("fonts/YekanBakh-Bold.ttf") format("truetype");
-        font-weight: bold;
-      }
-      @font-face {
-        font-family: "YekanMed";
-        src: url("fonts/YekanBakh-Medium.ttf") format("truetype");
-        font-weight: normal;
-      }
+      *:not {
+      font-family: 'Vazirmatn', sans-serif, !important;
+}
+
+html, body {
+  overflow-x: hidden;
+  max-width: 100vw;
+}
       body {
         background-color: #0f172a;
-        font-family: "YekanMed", sans-serif;
-        overflow-x: hidden;
       }
       .glass-effect {
         background: rgba(255, 255, 255, 0.03);
@@ -43,11 +56,16 @@
         opacity: 0.4;
       }
     </style>
-    <script shadow>
+    <script>
       tailwind.config = {
         theme: {
-          extend: { fontFamily: { sans: ["YekanMed"], display: ["YekanMed"] } },
-        },
+    extend: {
+      fontFamily: {
+        // حالا هر جا از کلاس sans استفاده کنی، وزیر لود می‌شه
+        sans: ['Vazirmatn', 'sans-serif'],
+      }
+    },
+  },
       };
     </script>
   </head>
@@ -67,10 +85,10 @@
 
     <main class="container mx-auto max-w-5xl px-6 md:px-12 py-10 relative z-10">
       <div class="text-center mb-12" data-aos="fade-down">
-        <h1 class="text-3xl md:text-5xl font-extrabold mb-4 font-YekanBold">
+        <h1 class="text-3xl md:text-5xl font-extrabold mb-4">
           شرایط و ضوابط <span class="text-transparent bg-clip-text bg-gradient-to-l from-[#BBE1FA] to-[#3282B8]">استفاده از خدمات</span>
         </h1>
-        <p class="text-white/40 text-sm font-mono">آخرین بروزرسانی: دی ۱۴۰۳</p>
+        <p class="text-white/40 text-sm">آخرین بروزرسانی: دی ۱۴۰۳</p>
       </div>
 
       <div class="glass-effect rounded-[2.5rem] p-8 md:p-12 space-y-12" data-aos="fade-up">
@@ -82,7 +100,7 @@
         </div>
 
         <div class="space-y-4">
-          <h2 class="text-xl font-bold font-YekanBold flex items-center gap-3 text-[#BBE1FA]">
+          <h2 class="text-xl font-bold flex items-center gap-3 text-[#BBE1FA]">
             <i class="fa-solid fa-scale-balanced text-[#3282B8]"></i> چگونگی استفاده از خدمات
           </h2>
           <ul class="space-y-3 text-white/60 text-sm leading-relaxed pr-8 list-disc list-outside marker:text-[#3282B8]">
@@ -94,7 +112,7 @@
         </div>
 
         <div class="space-y-4">
-          <h2 class="text-xl font-bold font-YekanBold flex items-center gap-3 text-[#BBE1FA]">
+          <h2 class="text-xl font-bold flex items-center gap-3 text-[#BBE1FA]">
             <i class="fa-solid fa-triangle-exclamation text-[#3282B8]"></i> مسئولیت‌ها و محدودیت‌ها
           </h2>
           <ul class="space-y-3 text-white/60 text-sm leading-relaxed pr-8 list-disc list-outside marker:text-[#3282B8]">
@@ -106,7 +124,7 @@
         </div>
 
         <div class="space-y-4">
-          <h2 class="text-xl font-bold font-YekanBold flex items-center gap-3 text-[#BBE1FA]">
+          <h2 class="text-xl font-bold flex items-center gap-3 text-[#BBE1FA]">
             <i class="fa-solid fa-shield-halved text-[#3282B8]"></i> حریم خصوصی و پشتیبانی
           </h2>
           <ul class="space-y-3 text-white/60 text-sm leading-relaxed pr-8 list-disc list-outside marker:text-[#3282B8]">
@@ -178,7 +196,6 @@
         <div class="mt-16 pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-4 text-[11px] text-white/20">
           <div class="flex gap-6">
             <a href="terms.html" class="hover:text-white transition-colors text-[#3282B8]">شرایط و ضوابط</a>
-            <a href="#" class="hover:text-white transition-colors">حریم خصوصی</a>
           </div>
           <p>تمام حقوق مادی و معنوی سایت متعلق به شرکت کارتی پی می‌باشد © ۲۰۲۶</p>
         </div>

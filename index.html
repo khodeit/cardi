@@ -27,13 +27,19 @@
     />
     <script src="https://cdn.tailwindcss.com"></script>
     <link
-    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap"
-    rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap"
+      rel="stylesheet"
     />
-    <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@100;300;400;700;900&display=swap" rel="stylesheet">
+    <link
+      href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@100;300;400;700;900&display=swap"
+      rel="stylesheet"
+    />
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
-    <script src="https://kit.fontawesome.com/8663f2f086.js" crossorigin="anonymous"></script>
-    
+    <script
+      src="https://kit.fontawesome.com/8663f2f086.js"
+      crossorigin="anonymous"
+    ></script>
+
     <style>
       /* Custom Scrollbar */
       ::-webkit-scrollbar {
@@ -49,35 +55,30 @@
       ::-webkit-scrollbar-thumb:hover {
         background: #bbe1fa;
       }
-      /* @font-face {
-        font-family: "YekanBold";
-        src: url("fonts/YekanBakh-Bold.ttf") format("truetype");
-        font-weight: bold;
-        font-style: normal;
+      *:not {
+        font-family: "Vazirmatn", sans-serif !important;
       }
 
-      @font-face {
-        font-family: "YekanMed";
-        src: url("fonts/YekanBakh-Medium.ttf") format("truetype");
-        font-weight: normal;
-        font-style: normal;
-      } */
-      * {
-    font-family: 'Vazirmatn', sans-serif;
-}
+      /* اگر می‌خواهی تیترها کمی ضخیم‌تر باشن */
+      h1,
+      h2,
+      h3,
+      h4,
+      .font-bold {
+        font-weight: 700;
+      }
 
-/* اگر می‌خواهی تیترها کمی ضخیم‌تر باشن */
-h1, h2, h3, h4, .font-bold {
-    font-weight: 700;
-}
-
-/* برای حفظ استایل فونت انگلیسی در اعداد (اختیاری اما توصیه شده) */
-.font-mono, .font-inter {
-    font-family: 'Inter', 'Vazirmatn', sans-serif !important;
+      /* برای حفظ استایل فونت انگلیسی در اعداد (اختیاری اما توصیه شده) */
+      .font-mono,
+      .font-inter {
+        font-family: "Inter", "Vazirmatn", sans-serif !important;
+      }
+      html, body {
+  overflow-x: hidden;
+  max-width: 100vw;
 }
       body {
         background-color: #0f172a; /* رنگ پس‌زمینه اصلی */
-        overflow-x: hidden;
       }
 
       /* افکت شیشه‌ای (Glassmorphism) */
@@ -168,36 +169,44 @@ h1, h2, h3, h4, .font-bold {
         filter: drop-shadow(0 0 10px rgba(187, 225, 250, 0.5));
       }
       .premium-card {
-    background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05));
-    backdrop-filter: blur(20px);
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    border-radius: 20px;
-    position: relative;
-    overflow: hidden;
-}
-
-.premium-card::before {
-    content: "";
-    position: absolute;
-    top: -50%;
-    left: -50%;
-    width: 200%;
-    height: 200%;
-    background: radial-gradient(circle, rgba(187, 225, 250, 0.1) 0%, transparent 70%);
-    transform: rotate(30deg);
-}
-    </style>
-    <script shadow>
-tailwind.config = {
-  theme: {
-    extend: {
-      fontFamily: {
-        // حالا هر جا از کلاس sans استفاده کنی، وزیر لود می‌شه
-        sans: ['Vazirmatn', 'sans-serif'],
+        background: linear-gradient(
+          135deg,
+          rgba(255, 255, 255, 0.1),
+          rgba(255, 255, 255, 0.05)
+        );
+        backdrop-filter: blur(20px);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        border-radius: 20px;
+        position: relative;
+        overflow: hidden;
       }
-    },
-  },
-};
+
+      .premium-card::before {
+        content: "";
+        position: absolute;
+        top: -50%;
+        left: -50%;
+        width: 200%;
+        height: 200%;
+        background: radial-gradient(
+          circle,
+          rgba(187, 225, 250, 0.1) 0%,
+          transparent 70%
+        );
+        transform: rotate(30deg);
+      }
+    </style>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              // حالا هر جا از کلاس sans استفاده کنی، وزیر لود می‌شه
+              sans: ["Vazirmatn", "sans-serif"],
+            },
+          },
+        },
+      };
     </script>
   </head>
   <body class="text-white antialiased">
@@ -229,7 +238,7 @@ tailwind.config = {
     <main
       class="container mx-auto max-w-7xl px-6 md:px-12 lg:px-20 pt-10 pb-24 flex flex-col md:flex-row items-center justify-between relative z-10"
     >
-      <div class="md:w-1/2 text-right z-10 font-YekanBold">
+      <div class="md:w-1/2 text-right z-10">
         <h1 class="text-5xl md:text-7xl font-extrabold leading-tight mb-6">
           <span
             class="text-transparent bg-clip-text bg-gradient-to-l from-[#BBE1FA] to-[#3282B8]"
@@ -249,11 +258,7 @@ tailwind.config = {
           نتفلیکس، آمازون، اپل و گوگل را تجربه کنید.
         </p>
 
-        <div
-          class="flex flex-col sm:flex-row gap-4 w-full mt-6"
-          data-aos="fade-up"
-          data-aos-delay="200"
-        >
+        <div class="flex flex-col sm:flex-row gap-4 w-full mt-6">
           <button
             class="w-full sm:w-auto bg-gradient-to-r from-[#1B6CA8] to-[#3282B8] px-10 py-4 rounded-xl font-bold shadow-lg shadow-blue-900/20 hover:scale-105 transition-transform text-center flex justify-center items-center"
           >
@@ -900,7 +905,7 @@ tailwind.config = {
             class="w-full p-6 text-right flex justify-between items-center group"
           >
             <span
-              class="text-lg font-bold font-[YekanBold] group-hover:text-[#BBE1FA] transition-colors"
+              class="text-lg font-bold group-hover:text-[#BBE1FA] transition-colors"
               >ویزا کارت مجازی آمریکا چیست؟</span
             >
             <span
@@ -928,7 +933,7 @@ tailwind.config = {
             class="w-full p-6 text-right flex justify-between items-center group"
           >
             <span
-              class="text-lg font-bold font-[YekanBold] group-hover:text-[#BBE1FA] transition-colors"
+              class="text-lg font-bold group-hover:text-[#BBE1FA] transition-colors"
               >آیا کارت به نام خودم صادر می‌شود؟</span
             >
             <span
@@ -955,7 +960,7 @@ tailwind.config = {
             class="w-full p-6 text-right flex justify-between items-center group"
           >
             <span
-              class="text-lg font-bold font-[YekanBold] group-hover:text-[#BBE1FA] transition-colors"
+              class="text-lg font-bold group-hover:text-[#BBE1FA] transition-colors"
               >زمان صدور کارت چقدر است؟</span
             >
             <span
@@ -983,7 +988,7 @@ tailwind.config = {
             class="w-full p-6 text-right flex justify-between items-center group"
           >
             <span
-              class="text-lg font-bold font-[YekanBold] group-hover:text-[#BBE1FA] transition-colors"
+              class="text-lg font-bold group-hover:text-[#BBE1FA] transition-colors"
               >هزینه صدور کارت چقدر است؟</span
             >
             <span
