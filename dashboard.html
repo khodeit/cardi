@@ -64,6 +64,47 @@
         box-shadow: 0 10px 20px rgba(50, 130, 184, 0.3);
       }
 
+      /* ✨ Modal انیمیشن */
+      .modal-backdrop {
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.3s ease;
+      }
+      .modal-backdrop.open {
+        opacity: 1;
+        pointer-events: all;
+      }
+      .modal-card {
+        transform: translateY(40px) scale(0.95);
+        opacity: 0;
+        transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+      }
+      .modal-backdrop.open .modal-card {
+        transform: translateY(0) scale(1);
+        opacity: 1;
+      }
+
+      /* ✨ کارت شناور انیمیشن */
+      @keyframes cardFloat {
+        0%, 100% { transform: translateY(0px) rotate(-1deg); }
+        50% { transform: translateY(-8px) rotate(1deg); }
+      }
+      .card-float { animation: cardFloat 4s ease-in-out infinite; }
+
+      /* ✨ نوتیف badge */
+      @keyframes pulse-ring {
+        0% { transform: scale(0.8); opacity: 1; }
+        100% { transform: scale(2); opacity: 0; }
+      }
+      .pulse-ring::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        border-radius: 50%;
+        background: #ef4444;
+        animation: pulse-ring 1.5s ease-out infinite;
+      }
+
       /* مخفی سازی قطعی نوار پایین در دسکتاپ */
       @media (min-width: 1024px) {
         .mobile-nav {
@@ -247,6 +288,7 @@
           <div class="flex justify-between items-center">
             <h1 class="text-2xl font-black text-[#BBE1FA]">کارت‌های من</h1>
             <button
+              onclick="openNewCardModal()"
               class="bg-[#3282B8] px-6 py-3 rounded-2xl font-bold text-sm hover:scale-105 transition-transform shadow-lg shadow-blue-900/40"
             >
               + ساخت کارت جدید
@@ -356,9 +398,7 @@
         >
           <h1 class="text-2xl font-black text-[#BBE1FA]">مدیریت کیف پول</h1>
           <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <div
-              class="balance-card rounded-[2.5rem] p-8 shadow-xl border border-white/10"
-            >
+        <div class="bg-gradient-to-br from-[#0F172A] via-[#1B262C] to-[#3282B8]/40 p-8 rounded-[2.5rem] border border-white/10 shadow-2xl relative overflow-hidden flex flex-col justify-between aspect-[1.6/1]">
               <span class="text-white/60 text-sm font-bold"
                 >موجودی فعلی (تومان)</span
               >
@@ -371,7 +411,7 @@
               <div
                 class="mt-8 text-[10px] text-white/30 tracking-widest font-mono"
               >
-                AniCards Secure Wallet
+                CardiPay Secure Wallet
               </div>
             </div>
             <div class="glass rounded-[2.5rem] p-6 space-y-5">
@@ -558,6 +598,52 @@
     </nav>
 
     <script>
+      // ✨ Modal کارت جدید
+      function openNewCardModal() {
+        document.getElementById("newCardModal").classList.add("open");
+        document.body.style.overflow = "hidden";
+      }
+      function closeNewCardModal() {
+        document.getElementById("newCardModal").classList.remove("open");
+        document.body.style.overflow = "";
+      }
+      // بستن با کلیک بیرون از modal
+      document.getElementById("newCardModal").addEventListener("click", function(e) {
+        if (e.target === this) closeNewCardModal();
+      });
+
+      let selectedCardType = "standard";
+      function selectCardType(type, el) {
+        selectedCardType = type;
+        document.querySelectorAll(".card-type-btn").forEach(btn => {
+          btn.classList.remove("bg-[#3282B8]/20", "border-[#3282B8]", "text-white");
+          btn.classList.add("bg-white/5", "border-white/10", "text-white/50");
+        });
+        el.classList.remove("bg-white/5", "border-white/10", "text-white/50");
+        el.classList.add("bg-[#3282B8]/20", "border-[#3282B8]", "text-white");
+        document.getElementById("cardTypeLabel").textContent = type === "standard" ? "Standard Card" : "One-Time Card 🔥";
+      }
+
+      function updatePreviewName(val) {
+        document.getElementById("previewName").textContent = val || "نام کارت";
+      }
+
+      function createCard() {
+        const btn = event.target.closest("button");
+        btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin mr-2"></i> در حال صدور...';
+        btn.disabled = true;
+        setTimeout(() => {
+          closeNewCardModal();
+          btn.innerHTML = '<i class="fa-solid fa-bolt mr-2"></i> صدور فوری کارت';
+          btn.disabled = false;
+          // نمایش toast موفقیت
+          const toast = document.getElementById("toast");
+          toast.innerHTML = '<i class="fa-solid fa-circle-check text-green-400"></i><span class="text-sm font-bold">کارت با موفقیت صادر شد! ✨</span>';
+          toast.classList.remove("translate-y-20", "opacity-0");
+          setTimeout(() => toast.classList.add("translate-y-20", "opacity-0"), 3500);
+        }, 1800);
+      }
+
       function showSection(sectionId, element) {
         document
           .querySelectorAll(".section-content")
@@ -618,26 +704,43 @@
       }
 
       function copyToClipboard(text, element) {
-        navigator.clipboard.writeText(text).then(() => {
-          // نمایش پیغام
+        // ✅ Fix: fallback برای clipboard API
+        const doCopy = () => {
           const toast = document.getElementById("toast");
           toast.classList.remove("translate-y-20", "opacity-0");
-
-          // افکت کلیک روی خود دکمه/آیکون
           if (element) {
             const originalIcon = element.innerHTML;
-            element.innerHTML =
-              '<i class="fa-solid fa-check text-green-400"></i>';
-            setTimeout(() => {
-              element.innerHTML = originalIcon;
-            }, 2000);
+            element.innerHTML = '<i class="fa-solid fa-check text-green-400"></i>';
+            setTimeout(() => { element.innerHTML = originalIcon; }, 2000);
           }
+          setTimeout(() => { toast.classList.add("translate-y-20", "opacity-0"); }, 3000);
+        };
 
-          // مخفی کردن پیغام بعد از ۳ ثانیه
-          setTimeout(() => {
-            toast.classList.add("translate-y-20", "opacity-0");
-          }, 3000);
-        });
+        if (navigator.clipboard && window.isSecureContext) {
+          navigator.clipboard.writeText(text).then(doCopy).catch(() => {
+            // fallback اگر permission رد شد
+            const ta = document.createElement("textarea");
+            ta.value = text;
+            ta.style.position = "fixed";
+            ta.style.opacity = "0";
+            document.body.appendChild(ta);
+            ta.select();
+            document.execCommand("copy");
+            document.body.removeChild(ta);
+            doCopy();
+          });
+        } else {
+          // fallback برای HTTP یا مرورگرهای قدیمی
+          const ta = document.createElement("textarea");
+          ta.value = text;
+          ta.style.position = "fixed";
+          ta.style.opacity = "0";
+          document.body.appendChild(ta);
+          ta.select();
+          document.execCommand("copy");
+          document.body.removeChild(ta);
+          doCopy();
+        }
       }
       document.addEventListener("DOMContentLoaded", () => {
         const counters = document.querySelectorAll(".animate-counter");
@@ -676,6 +779,72 @@
         counters.forEach((counter) => counterObserver.observe(counter));
       });
     </script>
+
+    <!-- ✨ Modal ساخت کارت جدید -->
+    <div id="newCardModal" class="modal-backdrop fixed inset-0 z-[9998] flex items-end md:items-center justify-center p-4" style="background: rgba(0,0,0,0.7); backdrop-filter: blur(8px);">
+      <div class="modal-card w-full max-w-md glass rounded-[2.5rem] p-8 border border-white/10 shadow-2xl">
+        <div class="flex justify-between items-center mb-8">
+          <div>
+            <h2 class="text-xl font-black text-[#BBE1FA]">ساخت کارت جدید</h2>
+            <p class="text-white/30 text-xs mt-1">ویزاکارت مجازی در ثانیه صادر میشه</p>
+          </div>
+          <button type="button" onclick="closeNewCardModal()" class="w-10 h-10 rounded-full bg-white/5 hover:bg-white/10 flex items-center justify-center transition-all">
+            <i class="fa-solid fa-xmark text-white/60"></i>
+          </button>
+        </div>
+
+        <!-- پیش‌نمایش کارت -->
+        <div class="card-float mb-8">
+          <div class="bg-gradient-to-br from-[#0F172A] via-[#1B262C] to-[#3282B8]/60 p-6 rounded-[2rem] border border-white/10 shadow-2xl relative overflow-hidden aspect-[1.6/1]">
+            <div class="absolute top-0 right-0 w-48 h-48 bg-[#3282B8]/20 blur-3xl rounded-full"></div>
+            <div class="absolute bottom-0 left-0 w-32 h-32 bg-[#BBE1FA]/10 blur-2xl rounded-full"></div>
+            <div class="relative z-10 h-full flex flex-col justify-between">
+              <div class="flex justify-between items-start">
+                <div>
+                  <span id="cardTypeLabel" class="text-[10px] text-white/40 font-bold uppercase tracking-widest">Standard Card</span>
+                  <div class="text-2xl font-black font-mono tracking-tight mt-1 text-white/90">$0.00</div>
+                </div>
+                <img src="https://upload.wikimedia.org/wikipedia/commons/5/5e/Visa_Inc._logo.svg" alt="Visa" class="w-12 filter brightness-200 opacity-80">
+              </div>
+              <div>
+                <div class="text-white/50 text-sm font-mono tracking-[0.15em] mb-2">•••• •••• •••• ••••</div>
+                <div class="flex justify-between text-[10px] text-white/30 font-mono">
+                  <span id="previewName">نام کارت</span>
+                  <span>EXP: MM/YY</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- فرم -->
+        <div class="space-y-4">
+          <div>
+            <label class="text-[10px] text-white/40 font-bold uppercase tracking-widest mb-2 block">نوع کارت</label>
+            <div class="grid grid-cols-2 gap-3">
+              <button type="button" onclick="selectCardType('standard', this)" class="card-type-btn p-4 rounded-2xl bg-[#3282B8]/20 border border-[#3282B8] text-sm font-bold text-center transition-all">
+                <i class="fa-solid fa-credit-card mb-2 block text-[#3282B8]"></i>
+                استاندارد
+              </button>
+              <button type="button" onclick="selectCardType('disposable', this)" class="card-type-btn p-4 rounded-2xl bg-white/5 border border-white/10 text-sm font-bold text-center text-white/50 transition-all hover:border-white/30">
+                <i class="fa-solid fa-fire mb-2 block text-orange-400"></i>
+                یکبار مصرف
+              </button>
+            </div>
+          </div>
+
+          <div>
+            <label class="text-[10px] text-white/40 font-bold uppercase tracking-widest mb-2 block">نام کارت (برای شناسایی)</label>
+            <input type="text" id="cardNickname" placeholder="مثال: خرید آمازون" oninput="updatePreviewName(this.value)"
+              class="w-full bg-white/5 border border-white/10 rounded-2xl py-4 px-6 text-sm outline-none focus:border-[#3282B8] transition-all placeholder:text-white/20" />
+          </div>
+
+          <button type="button" onclick="createCard()" class="w-full bg-gradient-to-r from-[#1B6CA8] to-[#3282B8] py-4 rounded-2xl font-black text-sm shadow-lg shadow-blue-900/30 hover:scale-[1.02] active:scale-[0.98] transition-all mt-2">
+            <i class="fa-solid fa-bolt mr-2"></i> صدور فوری کارت
+          </button>
+        </div>
+      </div>
+    </div>
 
     <div
       id="toast"
