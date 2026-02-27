@@ -177,17 +177,17 @@
 
             <div>
               <div class="relative">
-                <i class="fa-solid fa-lock absolute right-4 top-[1.1rem] opacity-50" style="color:white"></i>
+                <i class="fa-solid fa-lock absolute left-4 top-[1.1rem] opacity-50" style="color:white"></i>
                 <input id="login-pass" type="password" placeholder="رمز عبور"
                   class="w-full input-glass rounded-xl px-5 py-4 pl-12 pr-12 text-sm"
                   dir="ltr"
                   oninput="validatePassword(this, 'login-pass-err')"
                 />
-                <button type="button" class="absolute left-4 top-[1.1rem] opacity-40 hover:opacity-100 transition-opacity"
-                onclick="togglePassword('login-pass', 'eye-login')">
-                <i id="eye-login" class="fa-solid fa-eye" style="color:white"></i>
-              </button>
-            </div>
+                <button type="button" class="absolute right-4 top-[1.1rem] opacity-40 hover:opacity-100 transition-opacity"
+                  onclick="togglePassword('login-pass', 'eye-login')">
+                  <i id="eye-login" class="fa-solid fa-eye" style="color:white"></i>
+                </button>
+              </div>
               <p class="error-msg" id="login-pass-err">رمز عبور باید حداقل ۶ کاراکتر باشد</p>
             </div>
           </div>
