@@ -2,7 +2,10 @@
 <html lang="fa" dir="rtl">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+    name="viewport"
+    content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
+  />
     <title>شرایط و ضوابط - کارتی پی</title>
     <link rel="icon" href="/assests/favicon.ico" />
     <link
@@ -23,22 +26,38 @@
       href="assests/apple-touch-icon.png"
     />
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@100;300;400;700;900&display=swap" rel="stylesheet">
-    <script src="https://kit.fontawesome.com/85879a8cdb.js" crossorigin="anonymous"></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@100;300;400;700;900&display=swap"
+      rel="stylesheet"
+    />
+    <script
+      src="https://kit.fontawesome.com/85879a8cdb.js"
+      crossorigin="anonymous"
+    ></script>
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
     <style>
-      ::-webkit-scrollbar { width: 8px; }
-      ::-webkit-scrollbar-track { background: #0f172a; }
-      ::-webkit-scrollbar-thumb { background: #3282b8; border-radius: 10px; }
-      ::-webkit-scrollbar-thumb:hover { background: #bbe1fa; }
+      ::-webkit-scrollbar {
+        width: 8px;
+      }
+      ::-webkit-scrollbar-track {
+        background: #0f172a;
+      }
+      ::-webkit-scrollbar-thumb {
+        background: #3282b8;
+        border-radius: 10px;
+      }
+      ::-webkit-scrollbar-thumb:hover {
+        background: #bbe1fa;
+      }
       *:not {
-      font-family: 'Vazirmatn', sans-serif, !important;
-}
+        font-family: "Vazirmatn", sans-serif !important;
+      }
 
-html, body {
-  overflow-x: hidden;
-  max-width: 100vw;
-}
+      html,
+      body {
+        overflow-x: hidden;
+        max-width: 100vw;
+      }
       body {
         background-color: #0f172a;
       }
@@ -59,25 +78,35 @@ html, body {
     <script>
       tailwind.config = {
         theme: {
-    extend: {
-      fontFamily: {
-        // حالا هر جا از کلاس sans استفاده کنی، وزیر لود می‌شه
-        sans: ['Vazirmatn', 'sans-serif'],
-      }
-    },
-  },
+          extend: {
+            fontFamily: {
+              // حالا هر جا از کلاس sans استفاده کنی، وزیر لود می‌شه
+              sans: ["Vazirmatn", "sans-serif"],
+            },
+          },
+        },
       };
     </script>
   </head>
   <body class="text-white antialiased">
     <div class="glow-sphere w-96 h-96 bg-[#3282B8] top-[-5%] left-[-5%]"></div>
-    
-    <header class="container mx-auto max-w-7xl px-6 md:px-12 lg:px-20 py-8 grid grid-cols-2 md:grid-cols-3 items-center relative z-50">
+
+    <header
+      class="container mx-auto max-w-7xl px-6 md:px-12 lg:px-20 py-8 grid grid-cols-2 md:grid-cols-3 items-center relative z-50"
+    >
       <div class="flex justify-start md:justify-center md:col-start-2">
-        <a href="index.html"><img src="assests/logo.png" alt="AniCards Logo" class="w-16 h-16 md:w-20 md:h-20" /></a>
+        <a href="index.html"
+          ><img
+            src="assests/logo.png"
+            alt="AniCards Logo"
+            class="w-16 h-16 md:w-20 md:h-20"
+        /></a>
       </div>
       <div class="flex justify-end items-start md:col-start-3">
-        <a href="login.html" class="glass-effect px-8 py-2.5 rounded-full text-[#BBE1FA] hover:bg-white hover:text-[#0F172A] transition-all duration-300 font-bold">
+        <a
+          href="login.html"
+          class="glass-effect px-8 py-2.5 rounded-full text-[#BBE1FA] hover:bg-white hover:text-[#0F172A] transition-all duration-300 font-bold"
+        >
           ورود / ثبت‌نام
         </a>
       </div>
@@ -86,118 +115,238 @@ html, body {
     <main class="container mx-auto max-w-5xl px-6 md:px-12 py-10 relative z-10">
       <div class="text-center mb-12" data-aos="fade-down">
         <h1 class="text-3xl md:text-5xl font-extrabold mb-4">
-          شرایط و ضوابط <span class="text-transparent bg-clip-text bg-gradient-to-l from-[#BBE1FA] to-[#3282B8]">استفاده از خدمات</span>
+          شرایط و ضوابط
+          <span
+            class="text-transparent bg-clip-text bg-gradient-to-l from-[#BBE1FA] to-[#3282B8]"
+            >استفاده از خدمات</span
+          >
         </h1>
         <p class="text-white/40 text-sm">آخرین بروزرسانی: دی ۱۴۰۳</p>
       </div>
 
-      <div class="glass-effect rounded-[2.5rem] p-8 md:p-12 space-y-12" data-aos="fade-up">
-        
+      <div
+        class="glass-effect rounded-[2.5rem] p-8 md:p-12 space-y-12"
+        data-aos="fade-up"
+      >
         <div class="border-r-4 border-[#3282B8] pr-6">
           <p class="text-white/80 leading-relaxed text-base md:text-lg">
-            مطالعه دقیق این سند پیش از استفاده از خدمات توصیه می‌شود. ادامه استفاده از پلتفرم به‌معنای پذیرش کامل شرایط ذکرشده است و هرگونه به‌روزرسانی از طریق همین صفحه اطلاع‌رسانی خواهد شد.
+            مطالعه دقیق این سند پیش از استفاده از خدمات توصیه می‌شود. ادامه
+            استفاده از پلتفرم به‌معنای پذیرش کامل شرایط ذکرشده است و هرگونه
+            به‌روزرسانی از طریق همین صفحه اطلاع‌رسانی خواهد شد.
           </p>
         </div>
 
         <div class="space-y-4">
           <h2 class="text-xl font-bold flex items-center gap-3 text-[#BBE1FA]">
-            <i class="fa-solid fa-scale-balanced text-[#3282B8]"></i> چگونگی استفاده از خدمات
+            <i class="fa-solid fa-scale-balanced text-[#3282B8]"></i> چگونگی
+            استفاده از خدمات
           </h2>
-          <ul class="space-y-3 text-white/60 text-sm leading-relaxed pr-8 list-disc list-outside marker:text-[#3282B8]">
-            <li>استفاده از کارت‌های مجازی ما صرفاً برای اهداف قانونی و مطابق با مقررات کشور محل استفاده و قوانین بین‌المللی مجاز است.</li>
-            <li>ایجاد حساب کاربری به‌معنای پذیرش قوانین احراز هویت و کنترل‌های امنیتی است.</li>
-            <li>کاربر مسئول صحت اطلاعات هویتی و مالی ارائه‌شده در هنگام ثبت سفارش است.</li>
-            <li>هرگونه سوءاستفاده از کارت‌ها یا انتقال مالکیت بدون هماهنگی کتبی ممنوع است.</li>
+          <ul
+            class="space-y-3 text-white/60 text-sm leading-relaxed pr-8 list-disc list-outside marker:text-[#3282B8]"
+          >
+            <li>
+              استفاده از کارت‌های مجازی ما صرفاً برای اهداف قانونی و مطابق با
+              مقررات کشور محل استفاده و قوانین بین‌المللی مجاز است.
+            </li>
+            <li>
+              ایجاد حساب کاربری به‌معنای پذیرش قوانین احراز هویت و کنترل‌های
+              امنیتی است.
+            </li>
+            <li>
+              کاربر مسئول صحت اطلاعات هویتی و مالی ارائه‌شده در هنگام ثبت سفارش
+              است.
+            </li>
+            <li>
+              هرگونه سوءاستفاده از کارت‌ها یا انتقال مالکیت بدون هماهنگی کتبی
+              ممنوع است.
+            </li>
           </ul>
         </div>
 
         <div class="space-y-4">
           <h2 class="text-xl font-bold flex items-center gap-3 text-[#BBE1FA]">
-            <i class="fa-solid fa-triangle-exclamation text-[#3282B8]"></i> مسئولیت‌ها و محدودیت‌ها
+            <i class="fa-solid fa-triangle-exclamation text-[#3282B8]"></i>
+            مسئولیت‌ها و محدودیت‌ها
           </h2>
-          <ul class="space-y-3 text-white/60 text-sm leading-relaxed pr-8 list-disc list-outside marker:text-[#3282B8]">
-            <li>برای تضمین پایداری خدمات، لازم است کاربران از محدودیت‌های فنی و تجاری آگاه باشند و آن‌ها را رعایت کنند.</li>
-            <li>مبالغ شارژشده قابل استرداد نیستند مگر در شرایط خاصی که در قرارداد پشتیبانی ذکر شده است.</li>
+          <ul
+            class="space-y-3 text-white/60 text-sm leading-relaxed pr-8 list-disc list-outside marker:text-[#3282B8]"
+          >
+            <li>
+              برای تضمین پایداری خدمات، لازم است کاربران از محدودیت‌های فنی و
+              تجاری آگاه باشند و آن‌ها را رعایت کنند.
+            </li>
+            <li>
+              مبالغ شارژشده قابل استرداد نیستند مگر در شرایط خاصی که در قرارداد
+              پشتیبانی ذکر شده است.
+            </li>
             <li>هزینه‌های کارمزد، مالیات و نوسانات ارزی به عهده کاربر است.</li>
-            <li>در صورت مشاهده فعالیت مشکوک، حساب کاربر بدون اطلاع قبلی به‌طور موقت مسدود می‌شود.</li>
+            <li>
+              در صورت مشاهده فعالیت مشکوک، حساب کاربر بدون اطلاع قبلی به‌طور
+              موقت مسدود می‌شود.
+            </li>
           </ul>
         </div>
 
         <div class="space-y-4">
           <h2 class="text-xl font-bold flex items-center gap-3 text-[#BBE1FA]">
-            <i class="fa-solid fa-shield-halved text-[#3282B8]"></i> حریم خصوصی و پشتیبانی
+            <i class="fa-solid fa-shield-halved text-[#3282B8]"></i> حریم خصوصی
+            و پشتیبانی
           </h2>
-          <ul class="space-y-3 text-white/60 text-sm leading-relaxed pr-8 list-disc list-outside marker:text-[#3282B8]">
-            <li>حفظ اطلاعات شخصی کاربران اولویت اصلی ما است و از استانداردهای رایج رمزنگاری و نگهداری داده استفاده می‌کنیم.</li>
-            <li>دسترسی به اطلاعات کارت تنها از طریق داشبورد امن و برای صاحب حساب امکان‌پذیر است.</li>
-            <li>سؤالات و درخواست‌های رسمی باید از طریق تیکت پشتیبانی یا ایمیل سازمانی ارسال شود.</li>
-            <li>درخواست‌های حقوقی یا قضایی مطابق قوانین جمهوری اسلامی ایران رسیدگی می‌شوند.</li>
+          <ul
+            class="space-y-3 text-white/60 text-sm leading-relaxed pr-8 list-disc list-outside marker:text-[#3282B8]"
+          >
+            <li>
+              حفظ اطلاعات شخصی کاربران اولویت اصلی ما است و از استانداردهای رایج
+              رمزنگاری و نگهداری داده استفاده می‌کنیم.
+            </li>
+            <li>
+              دسترسی به اطلاعات کارت تنها از طریق داشبورد امن و برای صاحب حساب
+              امکان‌پذیر است.
+            </li>
+            <li>
+              سؤالات و درخواست‌های رسمی باید از طریق تیکت پشتیبانی یا ایمیل
+              سازمانی ارسال شود.
+            </li>
+            <li>
+              درخواست‌های حقوقی یا قضایی مطابق قوانین جمهوری اسلامی ایران رسیدگی
+              می‌شوند.
+            </li>
           </ul>
         </div>
 
-        <div class="bg-gradient-to-br from-[#1B262C] to-[#0F172A] rounded-2xl p-8 border border-[#3282B8]/30 flex flex-col md:flex-row items-center justify-between gap-6">
+        <div
+          class="bg-gradient-to-br from-[#1B262C] to-[#0F172A] rounded-2xl p-8 border border-[#3282B8]/30 flex flex-col md:flex-row items-center justify-between gap-6"
+        >
           <div>
-            <h3 class="font-bold text-lg mb-2">نیاز به راهنمایی بیشتر دارید؟</h3>
-            <p class="text-white/40 text-sm">تیم پشتیبانی ما از شنبه تا پنج‌شنبه آماده پاسخگویی است. از طریق تیکت، ایمیل رسمی یا تماس تلفنی با ما در ارتباط باشید.</p>
+            <h3 class="font-bold text-lg mb-2">
+              نیاز به راهنمایی بیشتر دارید؟
+            </h3>
+            <p class="text-white/40 text-sm">
+              تیم پشتیبانی ما از شنبه تا پنج‌شنبه آماده پاسخگویی است. از طریق
+              تیکت، ایمیل رسمی یا تماس تلفنی با ما در ارتباط باشید.
+            </p>
           </div>
-          <a href="dashboard.html" class="shrink-0 bg-[#3282B8] hover:bg-[#1B6CA8] text-white px-8 py-3 rounded-xl font-bold transition-all shadow-lg shadow-blue-900/40">
+          <a
+            href="dashboard.html"
+            class="shrink-0 bg-[#3282B8] hover:bg-[#1B6CA8] text-white px-8 py-3 rounded-xl font-bold transition-all shadow-lg shadow-blue-900/40"
+          >
             بازگشت به داشبورد
           </a>
         </div>
-
       </div>
     </main>
 
-    <section class="container mx-auto max-w-7xl px-6 md:px-12 lg:px-20 py-16 md:py-24 relative z-10" data-aos="zoom-in">
+    <section
+      class="container mx-auto max-w-7xl px-6 md:px-12 lg:px-20 py-16 md:py-24 relative z-10"
+      data-aos="zoom-in"
+    >
       <div class="relative group">
-        <div class="absolute -inset-1 bg-gradient-to-r from-[#3282B8] to-[#1B262C] rounded-[2.5rem] blur opacity-25 group-hover:opacity-50 transition duration-1000"></div>
-        <div class="relative glass-effect rounded-[2.5rem] p-10 flex flex-col md:flex-row items-center justify-between gap-8 border border-white/10">
+        <div
+          class="absolute -inset-1 bg-gradient-to-r from-[#3282B8] to-[#1B262C] rounded-[2.5rem] blur opacity-25 group-hover:opacity-50 transition duration-1000"
+        ></div>
+        <div
+          class="relative glass-effect rounded-[2.5rem] p-10 flex flex-col md:flex-row items-center justify-between gap-8 border border-white/10"
+        >
           <div class="text-right">
-            <h2 class="text-2xl md:text-3xl font-bold mb-2">برای درخواست پنل تجاری با ما در ارتباط باشید</h2>
-            <p class="text-white/40 text-sm">کارت‌ها کاملاً مجازی (Virtual) هستند و تمام اطلاعات پس از صدور آنی به شما تحویل داده می‌شود.</p>
+            <h2 class="text-2xl md:text-3xl font-bold mb-2">
+              برای درخواست پنل تجاری با ما در ارتباط باشید
+            </h2>
+            <p class="text-white/40 text-sm">
+              کارت‌ها کاملاً مجازی (Virtual) هستند و تمام اطلاعات پس از صدور آنی
+              به شما تحویل داده می‌شود.
+            </p>
           </div>
-          <button class="bg-[#3282B8] hover:bg-white hover:text-[#0F172A] text-white px-10 py-4 rounded-2xl font-bold transition-all duration-300 shadow-xl shadow-blue-900/40 whitespace-nowrap">
+          <button
+            class="bg-[#3282B8] hover:bg-white hover:text-[#0F172A] text-white px-10 py-4 rounded-2xl font-bold transition-all duration-300 shadow-xl shadow-blue-900/40 whitespace-nowrap"
+          >
             درخواست پنل تجاری
           </button>
         </div>
       </div>
     </section>
 
-    <footer class="container mx-auto max-w-7xl px-6 md:px-12 lg:px-20 py-16 relative z-10">
-      <div class="glass-effect rounded-t-[3rem] p-12 border-t border-white/10 bg-gradient-to-b from-white/[0.03] to-transparent">
+    <footer
+      class="container mx-auto max-w-7xl px-6 md:px-12 lg:px-20 py-16 relative z-10"
+    >
+      <div
+        class="glass-effect rounded-t-[3rem] p-12 border-t border-white/10 bg-gradient-to-b from-white/[0.03] to-transparent"
+      >
         <div class="grid grid-cols-1 md:grid-cols-3 gap-12 items-center">
           <div class="text-right order-3 md:order-1">
-            <h3 class="flex flex-col justify-center items-center text-2xl font-black tracking-tighter mb-4 text-[#BBE1FA]">کارتی پی</h3>
-            <p class="flex flex-col justify-center items-center text-white/30 text-xs leading-loose">سریع، امن، مطمئن—دسترسی واقعی به خدمات جهانی</p>
+            <h3
+              class="flex flex-col justify-center items-center text-2xl font-black tracking-tighter mb-4 text-[#BBE1FA]"
+            >
+              کارتی پی
+            </h3>
+            <p
+              class="flex flex-col justify-center items-center text-white/30 text-xs leading-loose"
+            >
+              سریع، امن، مطمئن—دسترسی واقعی به خدمات جهانی
+            </p>
           </div>
           <div class="flex flex-col items-center gap-4 order-2">
-            <span class="text-white/40 text-xs font-bold uppercase tracking-widest">شبکه های اجتماعی</span>
+            <span
+              class="text-white/40 text-xs font-bold uppercase tracking-widest"
+              >شبکه های اجتماعی</span
+            >
             <div class="flex gap-4">
-              <a href="https://t.me/cardipay" class="w-12 h-12 rounded-full glass-effect flex items-center justify-center hover:bg-[#3282B8] hover:scale-110 transition-all border border-white/5">
-                <i class="fa-brands fa-telegram text-2xl" style="color: rgb(255, 255, 255)"></i>
+              <a
+                href="https://t.me/cardipay"
+                class="w-12 h-12 rounded-full glass-effect flex items-center justify-center hover:bg-[#3282B8] hover:scale-110 transition-all border border-white/5"
+              >
+                <i
+                  class="fa-brands fa-telegram text-2xl"
+                  style="color: rgb(255, 255, 255)"
+                ></i>
               </a>
-              <a href="https://www.instagram.com/Cardi.pay" class="w-12 h-12 rounded-full glass-effect flex items-center justify-center hover:bg-[#E1306C] hover:scale-110 transition-all border border-white/5">
-                <i class="fa-brands fa-instagram text-2xl" style="color: rgb(255, 255, 255)"></i>
+              <a
+                href="https://www.instagram.com/Cardi.pay"
+                class="w-12 h-12 rounded-full glass-effect flex items-center justify-center hover:bg-[#E1306C] hover:scale-110 transition-all border border-white/5"
+              >
+                <i
+                  class="fa-brands fa-instagram text-2xl"
+                  style="color: rgb(255, 255, 255)"
+                ></i>
               </a>
             </div>
           </div>
           <div class="text-right md:text-left order-1 md:order-3">
-            <div class="flex items-center justify-center md:justify-start gap-4 group cursor-pointer">
+            <div
+              class="flex items-center justify-center md:justify-start gap-4 group cursor-pointer"
+            >
               <div class="text-right">
-                <span class="block text-white/30 text-[10px] uppercase">شماره پشتیبانی</span>
-                <span class="block font-bold text-xl group-hover:text-[#3282B8] transition-colors">021 7243 4434</span>
+                <span class="block text-white/30 text-[10px] uppercase"
+                  >شماره پشتیبانی</span
+                >
+                <span
+                  class="block font-bold text-xl group-hover:text-[#3282B8] transition-colors"
+                  >021 7243 4434</span
+                >
               </div>
-              <div class="w-12 h-12 rounded-2xl bg-white/5 flex items-center justify-center text-[#3282B8] border border-white/10">
-                <i class="fa-solid fa-phone text-2xl" style="color: rgb(255, 255, 255)"></i>
+              <div
+                class="w-12 h-12 rounded-2xl bg-white/5 flex items-center justify-center text-[#3282B8] border border-white/10"
+              >
+                <i
+                  class="fa-solid fa-phone text-2xl"
+                  style="color: rgb(255, 255, 255)"
+                ></i>
               </div>
             </div>
           </div>
         </div>
-        <div class="mt-16 pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-4 text-[11px] text-white/20">
+        <div
+          class="mt-16 pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-4 text-[11px] text-white/20"
+        >
           <div class="flex gap-6">
-            <a href="terms.html" class="hover:text-white transition-colors text-[#3282B8]">شرایط و ضوابط</a>
+            <a
+              href="terms.html"
+              class="hover:text-white transition-colors text-[#3282B8]"
+              >شرایط و ضوابط</a
+            >
           </div>
-          <p>تمام حقوق مادی و معنوی سایت متعلق به شرکت کارتی پی می‌باشد © ۲۰۲۶</p>
+          <p>
+            تمام حقوق مادی و معنوی سایت متعلق به شرکت کارتی پی می‌باشد © ۲۰۲۶
+          </p>
         </div>
       </div>
     </footer>
