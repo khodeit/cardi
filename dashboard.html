@@ -64,47 +64,6 @@
         box-shadow: 0 10px 20px rgba(50, 130, 184, 0.3);
       }
 
-      /* ✨ Modal انیمیشن */
-      .modal-backdrop {
-        opacity: 0;
-        pointer-events: none;
-        transition: opacity 0.3s ease;
-      }
-      .modal-backdrop.open {
-        opacity: 1;
-        pointer-events: all;
-      }
-      .modal-card {
-        transform: translateY(40px) scale(0.95);
-        opacity: 0;
-        transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
-      }
-      .modal-backdrop.open .modal-card {
-        transform: translateY(0) scale(1);
-        opacity: 1;
-      }
-
-      /* ✨ کارت شناور انیمیشن */
-      @keyframes cardFloat {
-        0%, 100% { transform: translateY(0px) rotate(-1deg); }
-        50% { transform: translateY(-8px) rotate(1deg); }
-      }
-      .card-float { animation: cardFloat 4s ease-in-out infinite; }
-
-      /* ✨ نوتیف badge */
-      @keyframes pulse-ring {
-        0% { transform: scale(0.8); opacity: 1; }
-        100% { transform: scale(2); opacity: 0; }
-      }
-      .pulse-ring::before {
-        content: '';
-        position: absolute;
-        inset: 0;
-        border-radius: 50%;
-        background: #ef4444;
-        animation: pulse-ring 1.5s ease-out infinite;
-      }
-
       /* مخفی سازی قطعی نوار پایین در دسکتاپ */
       @media (min-width: 1024px) {
         .mobile-nav {
@@ -140,6 +99,83 @@
         position: relative;
         overflow: hidden;
       }
+
+      /* Notification panel */
+      .notif-panel {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 200;
+        pointer-events: none;
+      }
+      .notif-overlay {
+        position: absolute;
+        inset: 0;
+        background: rgba(0,0,0,0.5);
+        backdrop-filter: blur(4px);
+        opacity: 0;
+        transition: opacity 0.3s ease;
+        pointer-events: none;
+      }
+      .notif-drawer {
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: min(380px, 100vw);
+        height: 100%;
+        background: #0f172a;
+        border-left: 1px solid rgba(255,255,255,0.08);
+        transform: translateX(100%);
+        transition: transform 0.35s cubic-bezier(0.4,0,0.2,1);
+        pointer-events: auto;
+        display: flex;
+        flex-direction: column;
+      }
+      .notif-panel.open { pointer-events: auto; }
+      .notif-panel.open .notif-overlay { opacity: 1; pointer-events: auto; }
+      .notif-panel.open .notif-drawer { transform: translateX(0); }
+
+      .notif-item {
+        padding: 16px;
+        border-radius: 16px;
+        background: rgba(255,255,255,0.03);
+        border: 1px solid rgba(255,255,255,0.06);
+        transition: all 0.2s ease;
+        cursor: pointer;
+      }
+      .notif-item:hover { background: rgba(255,255,255,0.06); }
+      .notif-item.unread { border-color: rgba(50,130,184,0.2); background: rgba(50,130,184,0.05); }
+      .notif-badge {
+        position: absolute;
+        top: -4px;
+        left: -4px;
+        min-width: 18px;
+        height: 18px;
+        background: #ef4444;
+        border-radius: 9px;
+        border: 2px solid #0f172a;
+        font-size: 10px;
+        font-weight: 900;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0 3px;
+        transition: transform 0.3s ease;
+      }
+      .notif-badge.hidden-badge { transform: scale(0); }
+      .notif-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
+      .notif-dot.blue { background: #3282b8; }
+      .notif-dot.green { background: #22c55e; }
+      .notif-dot.yellow { background: #eab308; }
+      .notif-dot.red { background: #ef4444; }
+
+      @keyframes notifPop {
+        0% { transform: scale(0.8) translateY(-10px); opacity: 0; }
+        100% { transform: scale(1) translateY(0); opacity: 1; }
+      }
+      .notif-toast-item { animation: notifPop 0.3s ease forwards; }
       .datepicker-plot-area {
         background-color: #111827 !important; /* Slate-900 */
         border: 1px solid rgba(255, 255, 255, 0.1) !important;
@@ -207,13 +243,11 @@
       <div class="flex items-center gap-2">
         <img src="assests/logo.png" alt="cardipay" class="h-10 w-auto" />
       </div>
-      <button
+      <button onclick="toggleNotifPanel()"
         class="relative w-10 h-10 rounded-full glass flex items-center justify-center border border-white/10"
       >
         <i class="fa-regular fa-bell text-white"></i>
-        <span
-          class="absolute -top-1 -left-1 w-3 h-3 bg-red-500 rounded-full border border-[#0F172A]"
-        ></span>
+        <span id="mobileNotifBadge" class="notif-badge">۳</span>
       </button>
     </header>
 
@@ -268,6 +302,16 @@
               <span class="font-bold text-sm">پروفایل</span>
             </button>
             <button
+              onclick="toggleNotifPanel()"
+              class="nav-btn-desktop w-full flex items-center gap-4 p-4 rounded-2xl hover:bg-white/5 text-white/40 transition-all"
+            >
+              <div class="relative">
+                <i class="fa-regular fa-bell" style="color: rgb(255, 255, 255)"></i>
+                <span id="desktopNotifBadge" class="notif-badge" style="top:-6px;left:-6px;font-size:9px">۳</span>
+              </div>
+              <span class="font-bold text-sm">اعلانات</span>
+            </button>
+            <button
               class="w-full flex items-center gap-4 p-4 rounded-2xl hover:bg-red-500/10 text-red-400/50 transition-all"
             >
               <i
@@ -288,7 +332,6 @@
           <div class="flex justify-between items-center">
             <h1 class="text-2xl font-black text-[#BBE1FA]">کارت‌های من</h1>
             <button
-              onclick="openNewCardModal()"
               class="bg-[#3282B8] px-6 py-3 rounded-2xl font-bold text-sm hover:scale-105 transition-transform shadow-lg shadow-blue-900/40"
             >
               + ساخت کارت جدید
@@ -598,52 +641,6 @@
     </nav>
 
     <script>
-      // ✨ Modal کارت جدید
-      function openNewCardModal() {
-        document.getElementById("newCardModal").classList.add("open");
-        document.body.style.overflow = "hidden";
-      }
-      function closeNewCardModal() {
-        document.getElementById("newCardModal").classList.remove("open");
-        document.body.style.overflow = "";
-      }
-      // بستن با کلیک بیرون از modal
-      document.getElementById("newCardModal").addEventListener("click", function(e) {
-        if (e.target === this) closeNewCardModal();
-      });
-
-      let selectedCardType = "standard";
-      function selectCardType(type, el) {
-        selectedCardType = type;
-        document.querySelectorAll(".card-type-btn").forEach(btn => {
-          btn.classList.remove("bg-[#3282B8]/20", "border-[#3282B8]", "text-white");
-          btn.classList.add("bg-white/5", "border-white/10", "text-white/50");
-        });
-        el.classList.remove("bg-white/5", "border-white/10", "text-white/50");
-        el.classList.add("bg-[#3282B8]/20", "border-[#3282B8]", "text-white");
-        document.getElementById("cardTypeLabel").textContent = type === "standard" ? "Standard Card" : "One-Time Card 🔥";
-      }
-
-      function updatePreviewName(val) {
-        document.getElementById("previewName").textContent = val || "نام کارت";
-      }
-
-      function createCard() {
-        const btn = event.target.closest("button");
-        btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin mr-2"></i> در حال صدور...';
-        btn.disabled = true;
-        setTimeout(() => {
-          closeNewCardModal();
-          btn.innerHTML = '<i class="fa-solid fa-bolt mr-2"></i> صدور فوری کارت';
-          btn.disabled = false;
-          // نمایش toast موفقیت
-          const toast = document.getElementById("toast");
-          toast.innerHTML = '<i class="fa-solid fa-circle-check text-green-400"></i><span class="text-sm font-bold">کارت با موفقیت صادر شد! ✨</span>';
-          toast.classList.remove("translate-y-20", "opacity-0");
-          setTimeout(() => toast.classList.add("translate-y-20", "opacity-0"), 3500);
-        }, 1800);
-      }
-
       function showSection(sectionId, element) {
         document
           .querySelectorAll(".section-content")
@@ -704,43 +701,26 @@
       }
 
       function copyToClipboard(text, element) {
-        // ✅ Fix: fallback برای clipboard API
-        const doCopy = () => {
+        navigator.clipboard.writeText(text).then(() => {
+          // نمایش پیغام
           const toast = document.getElementById("toast");
           toast.classList.remove("translate-y-20", "opacity-0");
+
+          // افکت کلیک روی خود دکمه/آیکون
           if (element) {
             const originalIcon = element.innerHTML;
-            element.innerHTML = '<i class="fa-solid fa-check text-green-400"></i>';
-            setTimeout(() => { element.innerHTML = originalIcon; }, 2000);
+            element.innerHTML =
+              '<i class="fa-solid fa-check text-green-400"></i>';
+            setTimeout(() => {
+              element.innerHTML = originalIcon;
+            }, 2000);
           }
-          setTimeout(() => { toast.classList.add("translate-y-20", "opacity-0"); }, 3000);
-        };
 
-        if (navigator.clipboard && window.isSecureContext) {
-          navigator.clipboard.writeText(text).then(doCopy).catch(() => {
-            // fallback اگر permission رد شد
-            const ta = document.createElement("textarea");
-            ta.value = text;
-            ta.style.position = "fixed";
-            ta.style.opacity = "0";
-            document.body.appendChild(ta);
-            ta.select();
-            document.execCommand("copy");
-            document.body.removeChild(ta);
-            doCopy();
-          });
-        } else {
-          // fallback برای HTTP یا مرورگرهای قدیمی
-          const ta = document.createElement("textarea");
-          ta.value = text;
-          ta.style.position = "fixed";
-          ta.style.opacity = "0";
-          document.body.appendChild(ta);
-          ta.select();
-          document.execCommand("copy");
-          document.body.removeChild(ta);
-          doCopy();
-        }
+          // مخفی کردن پیغام بعد از ۳ ثانیه
+          setTimeout(() => {
+            toast.classList.add("translate-y-20", "opacity-0");
+          }, 3000);
+        });
       }
       document.addEventListener("DOMContentLoaded", () => {
         const counters = document.querySelectorAll(".animate-counter");
@@ -780,67 +760,40 @@
       });
     </script>
 
-    <!-- ✨ Modal ساخت کارت جدید -->
-    <div id="newCardModal" class="modal-backdrop fixed inset-0 z-[9998] flex items-end md:items-center justify-center p-4" style="background: rgba(0,0,0,0.7); backdrop-filter: blur(8px);">
-      <div class="modal-card w-full max-w-md glass rounded-[2.5rem] p-8 border border-white/10 shadow-2xl">
-        <div class="flex justify-between items-center mb-8">
-          <div>
-            <h2 class="text-xl font-black text-[#BBE1FA]">ساخت کارت جدید</h2>
-            <p class="text-white/30 text-xs mt-1">ویزاکارت مجازی در ثانیه صادر میشه</p>
+    <!-- Notification Panel -->
+    <div class="notif-panel" id="notifPanel">
+      <div class="notif-overlay" onclick="toggleNotifPanel()"></div>
+      <div class="notif-drawer" id="notifDrawer">
+        <!-- Header -->
+        <div class="flex items-center justify-between p-6 border-b border-white/08" style="border-bottom: 1px solid rgba(255,255,255,0.06)">
+          <div class="flex items-center gap-3">
+            <h2 class="text-lg font-black text-[#BBE1FA]">اعلانات</h2>
+            <span id="unreadCountBadge" class="bg-[#3282B8]/20 text-[#3282B8] text-xs font-bold px-2.5 py-0.5 rounded-full border border-[#3282B8]/20">۳ خوانده نشده</span>
           </div>
-          <button type="button" onclick="closeNewCardModal()" class="w-10 h-10 rounded-full bg-white/5 hover:bg-white/10 flex items-center justify-center transition-all">
-            <i class="fa-solid fa-xmark text-white/60"></i>
-          </button>
-        </div>
-
-        <!-- پیش‌نمایش کارت -->
-        <div class="card-float mb-8">
-          <div class="bg-gradient-to-br from-[#0F172A] via-[#1B262C] to-[#3282B8]/60 p-6 rounded-[2rem] border border-white/10 shadow-2xl relative overflow-hidden aspect-[1.6/1]">
-            <div class="absolute top-0 right-0 w-48 h-48 bg-[#3282B8]/20 blur-3xl rounded-full"></div>
-            <div class="absolute bottom-0 left-0 w-32 h-32 bg-[#BBE1FA]/10 blur-2xl rounded-full"></div>
-            <div class="relative z-10 h-full flex flex-col justify-between">
-              <div class="flex justify-between items-start">
-                <div>
-                  <span id="cardTypeLabel" class="text-[10px] text-white/40 font-bold uppercase tracking-widest">Standard Card</span>
-                  <div class="text-2xl font-black font-mono tracking-tight mt-1 text-white/90">$0.00</div>
-                </div>
-                <img src="https://upload.wikimedia.org/wikipedia/commons/5/5e/Visa_Inc._logo.svg" alt="Visa" class="w-12 filter brightness-200 opacity-80">
-              </div>
-              <div>
-                <div class="text-white/50 text-sm font-mono tracking-[0.15em] mb-2">•••• •••• •••• ••••</div>
-                <div class="flex justify-between text-[10px] text-white/30 font-mono">
-                  <span id="previewName">نام کارت</span>
-                  <span>EXP: MM/YY</span>
-                </div>
-              </div>
-            </div>
+          <div class="flex items-center gap-2">
+            <button onclick="markAllRead()" class="text-[11px] text-white/30 hover:text-[#3282B8] transition-colors font-bold">همه را خوانده شد</button>
+            <button onclick="toggleNotifPanel()" class="w-8 h-8 rounded-xl bg-white/5 hover:bg-white/10 flex items-center justify-center transition-all">
+              <i class="fa-solid fa-xmark text-white/60 text-sm"></i>
+            </button>
           </div>
         </div>
 
-        <!-- فرم -->
-        <div class="space-y-4">
-          <div>
-            <label class="text-[10px] text-white/40 font-bold uppercase tracking-widest mb-2 block">نوع کارت</label>
-            <div class="grid grid-cols-2 gap-3">
-              <button type="button" onclick="selectCardType('standard', this)" class="card-type-btn p-4 rounded-2xl bg-[#3282B8]/20 border border-[#3282B8] text-sm font-bold text-center transition-all">
-                <i class="fa-solid fa-credit-card mb-2 block text-[#3282B8]"></i>
-                استاندارد
-              </button>
-              <button type="button" onclick="selectCardType('disposable', this)" class="card-type-btn p-4 rounded-2xl bg-white/5 border border-white/10 text-sm font-bold text-center text-white/50 transition-all hover:border-white/30">
-                <i class="fa-solid fa-fire mb-2 block text-orange-400"></i>
-                یکبار مصرف
-              </button>
-            </div>
-          </div>
+        <!-- Filter tabs -->
+        <div class="flex gap-2 px-4 py-3" style="border-bottom: 1px solid rgba(255,255,255,0.04)">
+          <button onclick="filterNotifs('all', this)" class="notif-filter-btn text-[11px] font-bold px-3 py-1.5 rounded-lg bg-[#3282B8] text-white transition-all">همه</button>
+          <button onclick="filterNotifs('unread', this)" class="notif-filter-btn text-[11px] font-bold px-3 py-1.5 rounded-lg bg-white/5 text-white/40 hover:bg-white/10 transition-all">خوانده نشده</button>
+          <button onclick="filterNotifs('system', this)" class="notif-filter-btn text-[11px] font-bold px-3 py-1.5 rounded-lg bg-white/5 text-white/40 hover:bg-white/10 transition-all">سیستمی</button>
+        </div>
 
-          <div>
-            <label class="text-[10px] text-white/40 font-bold uppercase tracking-widest mb-2 block">نام کارت (برای شناسایی)</label>
-            <input type="text" id="cardNickname" placeholder="مثال: خرید آمازون" oninput="updatePreviewName(this.value)"
-              class="w-full bg-white/5 border border-white/10 rounded-2xl py-4 px-6 text-sm outline-none focus:border-[#3282B8] transition-all placeholder:text-white/20" />
-          </div>
+        <!-- Notifications list -->
+        <div class="flex-1 overflow-y-auto p-4 space-y-3" id="notifList">
+          <!-- items rendered by JS -->
+        </div>
 
-          <button type="button" onclick="createCard()" class="w-full bg-gradient-to-r from-[#1B6CA8] to-[#3282B8] py-4 rounded-2xl font-black text-sm shadow-lg shadow-blue-900/30 hover:scale-[1.02] active:scale-[0.98] transition-all mt-2">
-            <i class="fa-solid fa-bolt mr-2"></i> صدور فوری کارت
+        <!-- Footer -->
+        <div class="p-4" style="border-top: 1px solid rgba(255,255,255,0.05)">
+          <button class="w-full text-center text-[11px] text-white/20 hover:text-white/50 transition-colors py-2">
+            مشاهده همه اعلانات
           </button>
         </div>
       </div>
@@ -853,5 +806,159 @@
       <i class="fa-solid fa-circle-check text-green-400"></i>
       <span class="text-sm font-bold">در کلیپ‌بورد کپی شد!</span>
     </div>
+    <script>
+      // ===== NOTIFICATION SYSTEM =====
+      const notifications = [
+        {
+          id: 1, unread: true, type: 'system',
+          icon: 'fa-shield-halved', dotColor: 'green',
+          title: 'احراز هویت مورد نیاز است',
+          body: 'برای استفاده از تمام امکانات، مدارک هویتی خود را آپلود کنید.',
+          time: '۵ دقیقه پیش',
+          action: 'احراز هویت'
+        },
+        {
+          id: 2, unread: true, type: 'system',
+          icon: 'fa-wallet', dotColor: 'blue',
+          title: 'کیف پول شما شارژ شد',
+          body: 'مبلغ ۵۰۰,۰۰۰ تومان با موفقیت به کیف پول شما اضافه شد.',
+          time: '۲ ساعت پیش',
+          action: null
+        },
+        {
+          id: 3, unread: true, type: 'system',
+          icon: 'fa-credit-card', dotColor: 'yellow',
+          title: 'کارت مجازی شما منقضی می‌شود',
+          body: 'کارت ختم شده به ۱۱/۲۶ تا ۱۰ روز دیگر منقضی می‌شود.',
+          time: 'دیروز',
+          action: 'تمدید کارت'
+        },
+        {
+          id: 4, unread: false, type: 'system',
+          icon: 'fa-lock', dotColor: 'red',
+          title: 'ورود از دستگاه جدید',
+          body: 'یک ورود جدید از دستگاه ناشناس در تهران ثبت شد.',
+          time: '۳ روز پیش',
+          action: 'بررسی'
+        },
+        {
+          id: 5, unread: false, type: 'system',
+          icon: 'fa-gift', dotColor: 'green',
+          title: 'پیشنهاد ویژه برای شما',
+          body: 'با دعوت دوستانتان ۵٪ تخفیف در کارمزد کارت بعدی دریافت کنید.',
+          time: '۱ هفته پیش',
+          action: 'مشاهده پیشنهاد'
+        }
+      ];
+
+      let currentFilter = 'all';
+
+      function renderNotifications(filter) {
+        const list = document.getElementById('notifList');
+        let items = notifications;
+        if (filter === 'unread') items = notifications.filter(n => n.unread);
+        if (filter === 'system') items = notifications.filter(n => n.type === 'system');
+
+        if (items.length === 0) {
+          list.innerHTML = `
+            <div class="flex flex-col items-center justify-center py-16 text-center">
+              <div class="w-16 h-16 rounded-full bg-white/5 flex items-center justify-center mb-4">
+                <i class="fa-regular fa-bell-slash text-white/20 text-2xl"></i>
+              </div>
+              <p class="text-white/20 text-sm">اعلانی وجود ندارد</p>
+            </div>`;
+          return;
+        }
+
+        list.innerHTML = items.map((n, i) => `
+          <div class="notif-item notif-toast-item ${n.unread ? 'unread' : ''}"
+            style="animation-delay: ${i * 0.05}s"
+            onclick="readNotif(${n.id}, this)">
+            <div class="flex gap-3">
+              <div class="w-10 h-10 rounded-2xl flex items-center justify-center flex-shrink-0"
+                style="background: rgba(255,255,255,0.05)">
+                <i class="fa-solid ${n.icon} text-sm" style="color: ${dotColorHex(n.dotColor)}"></i>
+              </div>
+              <div class="flex-1 min-w-0">
+                <div class="flex items-start justify-between gap-2">
+                  <p class="text-sm font-bold leading-snug ${n.unread ? 'text-white' : 'text-white/60'}">${n.title}</p>
+                  <div class="flex items-center gap-1.5 flex-shrink-0">
+                    ${n.unread ? `<div class="notif-dot ${n.dotColor}"></div>` : ''}
+                  </div>
+                </div>
+                <p class="text-[11px] text-white/30 mt-1 leading-relaxed">${n.body}</p>
+                <div class="flex items-center justify-between mt-2">
+                  <span class="text-[10px] text-white/20 font-mono">${n.time}</span>
+                  ${n.action ? `<button class="text-[10px] text-[#3282B8] font-bold hover:underline">${n.action}</button>` : ''}
+                </div>
+              </div>
+            </div>
+          </div>`).join('');
+      }
+
+      function dotColorHex(c) {
+        const map = { blue:'#3282b8', green:'#22c55e', yellow:'#eab308', red:'#ef4444' };
+        return map[c] || '#fff';
+      }
+
+      function readNotif(id, el) {
+        const n = notifications.find(n => n.id === id);
+        if (n && n.unread) {
+          n.unread = false;
+          el.classList.remove('unread');
+          el.querySelector('.notif-dot') && el.querySelector('.notif-dot').remove();
+          updateBadge();
+          renderNotifications(currentFilter);
+        }
+      }
+
+      function markAllRead() {
+        notifications.forEach(n => n.unread = false);
+        updateBadge();
+        renderNotifications(currentFilter);
+      }
+
+      function updateBadge() {
+        const count = notifications.filter(n => n.unread).length;
+        const mb = document.getElementById('mobileNotifBadge');
+        const db = document.getElementById('desktopNotifBadge');
+        const ub = document.getElementById('unreadCountBadge');
+
+        [mb, db].forEach(b => {
+          if (!b) return;
+          if (count === 0) { b.classList.add('hidden-badge'); }
+          else { b.classList.remove('hidden-badge'); b.textContent = toPersianNum(count); }
+        });
+        if (ub) {
+          ub.textContent = count > 0 ? `${toPersianNum(count)} خوانده نشده` : 'همه خوانده شد';
+        }
+      }
+
+      function toPersianNum(n) {
+        return String(n).replace(/[0-9]/g, d => '۰۱۲۳۴۵۶۷۸۹'[d]);
+      }
+
+      function filterNotifs(type, btn) {
+        currentFilter = type;
+        document.querySelectorAll('.notif-filter-btn').forEach(b => {
+          b.classList.remove('bg-[#3282B8]', 'text-white');
+          b.classList.add('bg-white/5', 'text-white/40');
+        });
+        btn.classList.add('bg-[#3282B8]', 'text-white');
+        btn.classList.remove('bg-white/5', 'text-white/40');
+        renderNotifications(type);
+      }
+
+      function toggleNotifPanel() {
+        const panel = document.getElementById('notifPanel');
+        panel.classList.toggle('open');
+        if (panel.classList.contains('open')) {
+          renderNotifications(currentFilter);
+        }
+      }
+
+      // init badge on load
+      document.addEventListener('DOMContentLoaded', updateBadge);
+    </script>
   </body>
 </html>
